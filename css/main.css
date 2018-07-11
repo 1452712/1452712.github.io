@@ -1755,6 +1755,9 @@ pre .javascript .function {
   height: auto;
   border: 2px solid #333;
   opacity: 1;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
 }
 img:hover {
   -webkit-transform: rotateZ(360deg);
@@ -1848,7 +1851,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff74ff;
+  background: #21edff;
 }
 .links-of-blogroll {
   font-size: 13px;

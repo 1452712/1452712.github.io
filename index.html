@@ -293,6 +293,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Graphics/OpenGL-Env-in-Mac/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lumina[Jiahui] Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lumina Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Graphics/OpenGL-Env-in-Mac/" itemprop="url">
+                  OpenGL Env in Mac
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-07-15 01:06:55 / Modified: 01:36:20" itemprop="dateCreated datePublished" datetime="2018-07-15T01:06:55+08:00">2018-07-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Graphics/" itemprop="url" rel="index"><span itemprop="name">Graphics</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Refer to <a href="https://blog.csdn.net/sinat_14891561/article/details/74941333" target="_blank" rel="noopener">https://blog.csdn.net/sinat_14891561/article/details/74941333</a></p>
+</blockquote>
+<h2 id="Basic-Env"><a href="#Basic-Env" class="headerlink" title="Basic Env:"></a>Basic Env:</h2><ul>
+<li>Platform: macOS High Sierra</li>
+<li>Xcode: 9.4.1</li>
+<li>OpenGL: 4.1</li>
+</ul>
+<h2 id="Suggestion"><a href="#Suggestion" class="headerlink" title="Suggestion"></a>Suggestion</h2><p>Even though we can compile and install GLFW&amp;GLEW manually, I still strongly recommend installation by <em>home-brew</em>, especially for those who have already installed brew.</p>
+<h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a><strong>Issue</strong></h2><p><em>Header Search Paths</em> as well as <em>Library Search Paths</em> in Search Paths (Buildings) should be declared specifically. <code>/usr/local/include/**</code> may cause ERRORs like <code>#include nested too deeply</code>, because other libraries might exist in this folder.</p>
+<p>The solution is to use <code>usr/local/include/glad</code> instead. However, another ERROR will be caused in <em>glad.c</em>, indicating that <em>&lt;glad/glad.h&gt;</em> cannot be found. Modify it into <em>&lt;glad.h&gt;</em>. <em>&lt;KHR/khrplatform.h&gt;</em>, <em>&lt;GL/glew.h&gt;</em> and <em>&lt;GLFW/glfw.h&gt;</em> are also the same.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/Language/Notes-of-C-Primer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -483,7 +651,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -500,7 +668,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -521,7 +689,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

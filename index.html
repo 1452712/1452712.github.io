@@ -409,191 +409,16 @@
       
         
           
-            <h1 id="Change-the-execution-flow"><a href="#Change-the-execution-flow" class="headerlink" title="Change the execution flow"></a>Change the execution flow</h1><p><img src="/contents/images/VS2017-Debugging-Tips/image1-16.png" alt="Change the Execution Flow"></p>
-<p>A typical debugging situation is to analyze why a function call failed by stepping through. When another function that finds a function call returns an error and does not restart, use the yellow statement to identify the statement you want to execute next, thus changing the code location where the thread will execute next.</p>
-<p>Grab the yellow arrow (the execution pointer) on the left and move the yellow arrow  to the line above the method you want to step into. Be careful Moving the pointer cannot revert your application to an earlier app state.</p>
-<h1 id="Watch-Windows"><a href="#Watch-Windows" class="headerlink" title="Watch Windows"></a>Watch Windows</h1><h2 id="Pseudo-variables-in-Watch-Window"><a href="#Pseudo-variables-in-Watch-Window" class="headerlink" title="Pseudo-variables in Watch Window"></a>Pseudo-variables in Watch Window</h2><p>The Watch windows or the QuickWatch dialog support some special (debugger-recognized) variables called pseudo variables. The documented ones refer to <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables?view=vs-2017" target="_blank" rel="noopener">MS Docs</a></p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image2-18.png" alt="Pseudo-variables"></p>
-<p>If you want to display only the <em>Dynamic View</em> for an object, you can use the dynamic format specifier:</p>
-<ul>
-<li>C#: <strong>ObjectName, dynamic</strong></li>
-<li>Visual Basic:: <strong>$dynamic, ObjectName</strong></li>
-</ul>
-<p>The Dynamic View also enhances the debugging experience for COM objects. When the debugger encounters a COM object wrapped in System.__ComObject, it adds a Dynamic View node for the object.</p>
-<h2 id="Format-Specifiers"><a href="#Format-Specifiers" class="headerlink" title="Format Specifiers"></a>Format Specifiers</h2><p>If you have the following code:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> my_var1 = <span class="number">0x0065</span>;</span><br><span class="line">    <span class="keyword">int</span> my_var2 = <span class="number">0x0066</span>; </span><br><span class="line">    <span class="keyword">int</span> my_var3 = <span class="number">0x0067</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Add the my_var1 variable to the Watch window (while debugging, <strong>Debug &gt; Windows &gt; Watch &gt; Watch 1</strong>), and then set the display to hexadecimal (in the Watch window, right-click the variable and select <strong>Hexadecimal Display</strong>). Now the Watch window shows that it contains the value 0x0065. To see this value expressed as a character instead of an integer, in the Name column, after the variable name, add the character format specifier, <strong>c</strong>.</p>
-<p>The Value column now appears with 101 ‘e’.</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image3-20.png" alt="Format Specifiers"><br><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/format-specifiers-in-cpp?view=vs-2017" target="_blank" rel="noopener">Here</a> lists all the specifiers.</p>
-<h2 id="String-Visualizer"><a href="#String-Visualizer" class="headerlink" title="String Visualizer"></a>String Visualizer</h2><p><img src="/contents/images/VS2017-Debugging-Tips/image4-22.png" alt="String Visualizer"></p>
-<h1 id="View-Return-Values-for-Functions"><a href="#View-Return-Values-for-Functions" class="headerlink" title="View Return Values for Functions"></a>View Return Values for Functions</h1><p>To view return values for your functions, look at the functions that appear in the Autos window while you are stepping through your code. To see the return value for a function, make sure that the function you are interested in has already executed (press F10 once if you are currently stopped on the function call). If the window is closed, use <strong>Debug &gt; Windows &gt; Autos</strong> to open the Autos window.</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image5-24.png" alt="Return Values"></p>
-<p>In addition, you can enter functions in the Immediate window to view return values. (Open it using <strong>Debug &gt; Windows &gt; Immediate</strong>.)</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image6-26.png" alt="Immediate Window"></p>
-<p>Use the <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/context-operator-cpp?view=vs-2017" target="_blank" rel="noopener">context operator</a> in C++ to qualify a breakpoint location, variable name, or expression.</p>
-<h1 id="Disassembly-Code"><a href="#Disassembly-Code" class="headerlink" title="Disassembly Code"></a>Disassembly Code</h1><p>Disassembly Code is created by Just-in-Time (JIT) compiler, not the Microsoft intermediate language (MSIL) generated by the Visual Studio compiler.</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image7-28.png" alt="Disassembly Code"></p>
-<p>optional information:</p>
-<ul>
-<li>Memory address where each instruction is located. For native applications, this is the actual memory address. For Visual Basic, C#, or managed code, it is an offset from the beginning of the function.</li>
-<li>Source code from which the assembly code derives.</li>
-<li>Code bytes—byte representations of the actual machine or MSIL instructions.</li>
-<li>Symbol names for the memory addresses.</li>
-<li>Line numbers corresponding to the source code.</li>
-</ul>
-<h1 id="Breakpoints"><a href="#Breakpoints" class="headerlink" title="Breakpoints"></a>Breakpoints</h1><blockquote>
-<p>conditions (T/F; changed); hit count; filter (Expression &amp; Logical Operators; Particular Thread); actions; tags (for sort); labels; export/import; etc.</p>
-</blockquote>
-<h2 id="Run-to-Cursor"><a href="#Run-to-Cursor" class="headerlink" title="Run to Cursor"></a>Run to Cursor</h2><p>Right-click a line of code in your app and choose <strong>Run to Cursor</strong>. This command starts debugging and sets a temporary breakpoint on the current line of code.</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image9-32.png" alt="Run to Cursor"></p>
-<p>If you have set breakpoints, the debugger pauses on the first breakpoint that it hits.</p>
-<p>Press <strong>F5</strong> until you reach the line of code where you selected <strong>Run to Cursor</strong>.</p>
-<p>You can use <strong> Run to Cursor</strong> in the <strong>Call Stack</strong> window while you are debugging.</p>
-<h2 id="Run-to-a-Function-Specified-by-Name"><a href="#Run-to-a-Function-Specified-by-Name" class="headerlink" title="Run to a Function Specified by Name"></a>Run to a Function Specified by Name</h2><p>You can tell the debugger to run your application until it reaches a specified function. You can specify the function by name or you can choose it from the call stack.</p>
-<p>To specify a function by name, choose <strong>Debug, New Breakpoint, Break at Function</strong>, then enter the name of the function and other identifying information.</p>
-<p>To narrow the function specification:</p>
-<ol>
-<li>Use the fully qualified function name. Example: <code>Namespace1.ClassX.MethodA()</code></li>
-<li>Add the parameter types of an overloaded function. Example: <code>MethodA(int, string)</code></li>
-<li>Use the ‘!’ symbol to specify the module. Example: <code>App1.dll!MethodA</code></li>
-<li>Use the context operator in native C++. <code>{function, , [module]} [+&lt;line offset from start of method&gt;]</code> Example: <code>{MethodA, , App1.dll}+2</code></li>
-<li>Use the address of an object to set a breakpoint on a method called on a specific instance of a class. Native C++ Only. Example: <code>((my_class *) 0xcccccccc)-&gt;my_method</code></li>
-</ol>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image24-59.png" alt="Specification Break"></p>
-<p>If the function is overloaded or is in multiple namespace, you can choose the functions that you want in the <strong>Choose Breakpoints</strong> dialog box.</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image25-61.png" alt="Specification Break"></p>
-<h2 id="Other-Situation"><a href="#Other-Situation" class="headerlink" title="Other Situation"></a>Other Situation</h2><p>You can also set breakpoints in the <span style="color:red">call stack</span>, in the <span style="color:red">Disassembly window</span>, and, in <span style="color:red">native C++ code</span>, at a <span style="color:red">data condition</span> or a <span style="color:red">memory address</span>. Click <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/using-breakpoints?view=vs-2017#BKMK_Set_a_breakpoint_in_a_function" target="_blank" rel="noopener">here</a> for more information.</p>
-<p>To set breakpoint conditions:<br><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/using-breakpoints?view=vs-2017#breakpoint-conditions" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/visualstudio/debugger/using-breakpoints?view=vs-2017#breakpoint-conditions</a>.</p>
-<p>Log a message to Output window with special keywords:<br><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/using-breakpoints?view=vs-2017#BKMK_Print_to_the_Output_window_with_tracepoints" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/visualstudio/debugger/using-breakpoints?view=vs-2017#BKMK_Print_to_the_Output_window_with_tracepoints</a></p>
-<h1 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h1><p><img src="/contents/images/VS2017-Debugging-Tips/image10-34.png" alt="Memory"></p>
-<p>Some bugs are caused by incorrect struct definitions, ignored alignment properties, etc.</p>
-<h1 id="Multithread"><a href="#Multithread" class="headerlink" title="Multithread"></a>Multithread</h1><ul>
-<li>For <em>threads</em>, the primary tools for debugging threads are the <strong>Threads</strong> window, thread markers in source windows, <strong>Parallel Stacks</strong> window, <strong>Parallel Watch</strong> window, and the <strong>Debug Location</strong> toolbar. To learn about the Threads window and Debug Location toolbar, see <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-use-the-threads-window?view=vs-2017" target="_blank" rel="noopener">Walkthrough: Debug using the Threads Window</a>. To learn how to use the Parallel Stacks and Parallel Watch windows, see <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/get-started-debugging-multithreaded-apps?view=vs-2017" target="_blank" rel="noopener">Get started debugging a multithreaded application</a>. Both topics show how to use thread markers.</li>
-<li>For code that uses the <em><a href="https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-parallel-library-tpl" target="_blank" rel="noopener">Task Parallel Library (TPL)</a></em> or the <em><a href="https://docs.microsoft.com/en-us/cpp/parallel/concrt/concurrency-runtime/" target="_blank" rel="noopener">Concurrency Runtime</a></em>, the primary tools for debugging are the <strong>Parallel Stacks</strong> window, the <strong>Parallel Watch</strong> window, and the <strong>Tasks</strong> window (the Tasks window also supports JavaScript). To get started, see <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/walkthrough-debugging-a-parallel-application?view=vs-2017" target="_blank" rel="noopener">Walkthrough: Debugging a Parallel Application</a> and <a href="https://docs.microsoft.com/en-us/cpp/parallel/amp/walkthrough-debugging-a-cpp-amp-application" target="_blank" rel="noopener">Walkthrough: Debugging a C++ AMP Application</a>.</li>
-<li>For <em>debugging threads on the GPU</em>, the primary tool is the <strong>GPU Threads</strong> window. See <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-use-the-gpu-threads-window?view=vs-2017" target="_blank" rel="noopener">How to: Use the GPU Threads window</a>.</li>
-<li>For <em>processes</em>, the primary tools are the <strong>Attach to Process</strong> dialog box, the <strong>Processes</strong> window, and the <strong>Debug Location</strong> toolbar.</li>
-</ul>
-<h2 id="Thread-Markder"><a href="#Thread-Markder" class="headerlink" title="Thread Markder"></a>Thread Markder</h2><p>Threads Window (Debug) with Callstack:</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image8-30.png" alt="Disassembly Code"></p>
-<p>To discover the thread marker:</p>
-<ol>
-<li><p>In the Debug Toolbar, click the Show Threads in Source button <img src="/contents/images/VS2017-Debugging-Tips/image11-36.png" alt="button">.</p>
-</li>
-<li><p>Press F11 once to advance the debugger one line of code.</p>
-</li>
-<li><p>Look at the gutter on the left side of the window. On this line, you will see a thread marker icon <img src="/contents/images/VS2017-Debugging-Tips/image12-37.png" alt="icon"> that resembles two cloth threads. The thread marker indicates that a thread is stopped at this location. Notice that a thread marker may be partially concealed by a breakpoint.</p>
-</li>
-<li><p>Hover the pointer over the thread marker. A DataTip appears. The DataTip tells you the name and thread ID number for each stopped thread. In this case, the name is probably <code>&lt;noname&gt;</code>.</p>
-</li>
-<li><p>Right-click the thread marker to see the available options on the shortcut menu.</p>
-</li>
-</ol>
-<h2 id="View-the-Location-of-Threads"><a href="#View-the-Location-of-Threads" class="headerlink" title="View the Location of Threads"></a>View the Location of Threads</h2><p>In the Parallel Stacks window, you can switch between a Threads view and (for task-based programming) Tasks view, and you can view call stack information for each thread.</p>
-<p>Open the Parallel Stacks window by choosing <strong>Debug &gt; Windows &gt; Parallel Stacks</strong>. You should see something similar to this (the exact information will be different depending on the current location of each thread, your hardware, and your programming language).</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image13-38.png" alt="Threads"></p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image14-40.png" alt="Switch"></p>
-<p><strong>Threads View</strong> shows call stack information for all the threads in your application. It lets you navigate between threads and stack frames on those threads. In managed code, the <strong>Tasks View</strong> shows call stacks of <a href="https://docs.microsoft.com/en-us/dotnet/api/system.threading.tasks.task" target="_blank" rel="noopener">System.Threading.Tasks.Task</a> objects. In native code, the Tasks View shows call stacks of <a href="https://docs.microsoft.com/cpp/parallel/concrt/task-parallelism-concurrency-runtime" target="_blank" rel="noopener">task groups</a>, <a href="https://docs.microsoft.com/cpp/parallel/concrt/parallel-algorithms" target="_blank" rel="noopener">parallel algorithms</a>, <a href="https://docs.microsoft.com/cpp/parallel/concrt/asynchronous-agents" target="_blank" rel="noopener">asynchronous agents</a>, and <a href="https://docs.microsoft.com/cpp/parallel/concrt/task-scheduler-concurrency-runtime" target="_blank" rel="noopener">lightweight tasks</a>.</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image15-42.png" alt="Tasks View"></p>
-<p><strong>Method View</strong></p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image16-44.png" alt="Method View"></p>
-<h2 id="Flagging-and-Unflagging-Threads"><a href="#Flagging-and-Unflagging-Threads" class="headerlink" title="Flagging and Unflagging Threads"></a>Flagging and Unflagging Threads</h2><p>You can flag threads that you want to give special attention. Flagging threads is a good way to keep track of important threads and to ignore threads that you do not care about.</p>
-<p>To flag threads:</p>
-<ol>
-<li>In the <strong>Parallel Watch</strong> window, hold down the SHIFT key and select multiple rows.</li>
-<li>Right-click and choose <strong>Flag</strong>. Now, all the selected threads are flagged. Now, you can filter to show only flagged threads.</li>
-<li>In the Parallel Watch window, find the <strong>Show Only Flagged Threads</strong> button<img src="/contents/images/VS2017-Debugging-Tips/image17-46.png" alt="flag button"></li>
-<li>Click the <strong>Show Only Flagged Threads</strong> button.</li>
-</ol>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image18-47.png" alt="Flagged Threads"></p>
-<p>Depending on the thread ID, thread name, process ID, process name, machine name, etc., it is determined whether the thread is broken. Logical operations can be performed between the conditions; Right-click another thread and then we can <strong>Switch to Thread</strong>. Thread name can be set in both native code and managed code.</p>
-<h2 id="Freezing-and-Thawing-Thread-Execution"><a href="#Freezing-and-Thawing-Thread-Execution" class="headerlink" title="Freezing and Thawing Thread Execution"></a>Freezing and Thawing Thread Execution</h2><p>You can freeze and thaw (suspend and resume) threads to control the order in which threads perform work. This can help you resolve concurrency issues such as deadlocks and race conditions.</p>
-<p>To freeze and unfreeze threads:</p>
-<ol>
-<li>In the <strong>Parallel Watch</strong> window, with all the rows selected, right-click and select <strong>Freeze</strong>. In the second column, a pause icon now appears for each row. The pause icon indicates that the thread is frozen.</li>
-<li>Show the <strong>Suspended Count</strong> column by selecting it in the <strong>Columns</strong> list.</li>
-<li>Deselect the rows by clicking one row only.</li>
-<li>Right-click a row and select Thaw. The pause icon goes away on this row, indicating that the thread is no longer frozen.</li>
-<li>Switch to the code editor and click F11. Only the unfrozen thread runs. The app may also instantiate some new threads. Notice that any new threads are unflagged and are not frozen.</li>
-</ol>
-<h2 id="Switch-Between-Processes"><a href="#Switch-Between-Processes" class="headerlink" title="Switch Between Processes"></a>Switch Between Processes</h2><p>You can attach to multiple processes when you are debugging, but only one process is active in the debugger at any given time. You can set the active or current process in the Debug Location toolbar or in the Processes window. To switch between processes, both processes must be in break mode.</p>
-<p>To set the current process:</p>
-<ol>
-<li><p>On the Debug Location toolbar, choose Process to view the Process list box. Select the process that you want to designate as current process.<br><img src="/contents/images/VS2017-Debugging-Tips/image19-49.png" alt="Switch"></p>
-</li>
-<li><p>If the Debug Location toolbar is not visible, choose Tools, Customize. On the Toolbars tab, choose Debug Location.<br>Open the Processes window (shortcut Ctrl+Alt+Z), find the process that you want to set as the current process, and double-click it.<br><img src="/contents/images/VS2017-Debugging-Tips/image20-51.png" alt="Switch"></p>
-</li>
-</ol>
-<h2 id="Set-a-Breakpoint-on-a-Specific-Process"><a href="#Set-a-Breakpoint-on-a-Specific-Process" class="headerlink" title="Set a Breakpoint on a Specific Process"></a>Set a Breakpoint on a Specific Process</h2><ol>
-<li>Get the process name or process ID number from the Processes window.</li>
-<li>Select a breakpoint, and open the Breakpoint Filter dialog box as in the first procedure.</li>
-<li>In the Breakpoint Filter dialog box, type: <code>ProcessName = yourprocessname</code> or <code>ProcessID = yourprocessIDnumber</code>. To create a more complex filter, you can combine clauses using &amp;, the AND operator, ||, the OR operator, !, the NOT operator, and parentheses.</li>
-<li>Click OK.</li>
-</ol>
-<h2 id="Set-a-Breakpoint-on-a-Specific-Thread"><a href="#Set-a-Breakpoint-on-a-Specific-Thread" class="headerlink" title="Set a Breakpoint on a Specific Thread"></a>Set a Breakpoint on a Specific Thread</h2><ol>
-<li>Get the thread name or thread ID number from the Threads window.</li>
-<li>Select a breakpoint, and open the Breakpoint Filter dialog box as described in the first procedure.</li>
-<li>In the Breakpoint Filter dialog box, type: <code>ThreadName = yourthreadname</code> or <code>ThreadID = yourthreadIDnumber</code>. To create a more complex filter, you can combine clauses using &amp;, the AND operator, ||, the OR operator, !, the NOT operator, and parentheses.</li>
-<li>Click OK.</li>
-</ol>
-<p>More Reading: </p>
-<blockquote>
-<p><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/walkthrough-debugging-a-parallel-application?view=vs-2017" target="_blank" rel="noopener">Walkthrough: Debugging a Parallel Application in Visual Studio</a> </p>
-</blockquote>
-<h1 id="Step-into-Specific"><a href="#Step-into-Specific" class="headerlink" title="Step into Specific"></a>Step into Specific</h1><p><img src="/contents/images/VS2017-Debugging-Tips/image21-53.png" alt="Step into"></p>
-<p><strong>It can be widely used!</strong></p>
-<h1 id="Snapshot-Debugger"><a href="#Snapshot-Debugger" class="headerlink" title="Snapshot Debugger"></a>Snapshot Debugger</h1><p>To debug live ASP.NET apps in Azure App Service:<br><img src="/contents/images/VS2017-Debugging-Tips/image22-55.png" alt="Snapshot"></p>
-<p>For more information, see <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/debug-live-azure-applications?view=vs-2017" target="_blank" rel="noopener">Debug live ASP.NET apps using the Snapshot Debugger</a>.</p>
-<p>View snapshots with <span style="color:red"><strong>IntelliTrace</strong></span> <strong>Step-back</strong>:</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image23-57.png" alt="IntelliTrace"></p>
-<p>For more information, see the <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-use-intellitrace-step-back?view=vs-2017" target="_blank" rel="noopener">View snapshots using IntelliTrace step-back</a> and <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/intellitrace?view=vs-2017" target="_blank" rel="noopener">IntelliTrace</a> page.</p>
-<h1 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h1><h2 id="Break-into-Code-on-Handled-Exceptions"><a href="#Break-into-Code-on-Handled-Exceptions" class="headerlink" title="Break into Code on Handled Exceptions"></a>Break into Code on Handled Exceptions</h2><p>The debugger breaks into your code on unhandled exceptions. However, handled exceptions (such as exceptions that occur within a try/catch block) can also be a source of bugs and you may want to investigate when they occur. You can configure the debugger to break into code for handled exceptions as well by configuring options in the Exception Settingsdialog box. Open this dialog box by choosing <strong>Debug &gt; Windows &gt; Exception</strong> Settings.</p>
-<p>The Exception Settings dialog box allows you to tell the debugger to break into code on specific exceptions. In the illustration below, the debugger breaks into your code whenever a System.NullReferenceException occurs. For more information, see <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/managing-exceptions-with-the-debugger?view=vs-2017" target="_blank" rel="noopener">Managing exceptions</a>.</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image26-63.png" alt="Handled Exceptions"></p>
-<h2 id="Add-Conditions-to-an-Exception"><a href="#Add-Conditions-to-an-Exception" class="headerlink" title="Add Conditions to an Exception"></a>Add Conditions to an Exception</h2><p>You can set conditions on exceptions in the Exception Settings dialog box. Currently supported conditions include the module name(s) to include or exclude for the exception. By setting module names as conditions, you can choose to break for the exception only on particular code modules, or you can avoid breaking on particular modules.<br>Note</p>
-<p>Adding conditions to an exception is new in Visual Studio 2017<br>To add conditional exceptions, choose the Edit condition icon in the Exception Settings dialog box or right-click the exception and choose Edit Conditions.</p>
-<p><img src="/contents/images/VS2017-Debugging-Tips/image27-65.png" alt="Condtional Exception"></p>
-<h1 id="GPU-Debugging"><a href="#GPU-Debugging" class="headerlink" title="GPU Debugging"></a>GPU Debugging</h1><h2 id="Configuring-GPU-Debugging"><a href="#Configuring-GPU-Debugging" class="headerlink" title="Configuring GPU Debugging"></a>Configuring GPU Debugging</h2><p>The debugger cannot break on both CPU code and GPU code in the same app execution. By default, the debugger breaks on CPU code. To debug GPU code, use one of these two steps:</p>
-<ol>
-<li>In the Debug Type list on the Standard toolbar, choose GPU Only.</li>
-<li>In Solution Explorer, on the shortcut menu for the project, choose Properties. In the Property Pages dialog box, select Debugging, and then select GPU Only in the Debugger Type list.<blockquote>
-<p>NOTE: Independent hardware vendors who want to support GPU debugging in Visual Studio must create a DLL that implements the VSD3DDebug interface and targets their own drivers.</p>
-</blockquote>
-</li>
-</ol>
-<h1 id="Other-Tips"><a href="#Other-Tips" class="headerlink" title="Other Tips"></a>Other Tips</h1><ul>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger?view=vs-2017" target="_blank" rel="noopener">Symbol Files (Program Database .pdb)</a>; <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-set-debug-and-release-configurations?view=vs-2017#generate-symbol-files-for-a-c-project" target="_blank" rel="noopener">Generate Symbol Files</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/just-my-code?view=vs-2017" target="_blank" rel="noopener">Just My Code</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/map-methods-on-the-call-stack-while-debugging-in-visual-studio?view=vs-2017" target="_blank" rel="noopener">Call Stack Map</a> </li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017#BKMK_Step_into_properties_and_operators_in_managed_code" target="_blank" rel="noopener">Set Step Into Properties &amp; Operators</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/using-breakpoints?view=vs-2017#BKMK_set_a_data_breakpoint_native_cplusplus_only" target="_blank" rel="noopener">Setting a Data Breakpoint (native C++ only)</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-use-the-registers-window?view=vs-2017" target="_blank" rel="noopener">Register Values</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/edit-and-continue-visual-cpp?view=vs-2017" target="_blank" rel="noopener">Edit and Continue Debugging</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-find-which-dll-your-program-crashed-in?view=vs-2017" target="_blank" rel="noopener">Find DLL Crashed in</a> And <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-examine-system-code-after-an-exception?view=vs-2017" target="_blank" rel="noopener">Examine System Code After an Exception</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-view-script-documents?view=vs-2017" target="_blank" rel="noopener">View Script Documents</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-use-native-run-time-checks?view=vs-2017" target="_blank" rel="noopener">Native Run-time Checks</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/debugger-tips-and-tricks?view=vs-2017" target="_blank" rel="noopener">Debugger Tips and Tricks (including: Attach to processes; Debug with Just- In-Time)</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/debugbreak-and-debugbreak?view=vs-2017" target="_blank" rel="noopener">Set breakpoint by code</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/c-cpp-assertions?view=vs-2017" target="_blank" rel="noopener"><span style="color:red">C/C++ Assertions</span></a></li>
-</ul>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
-<li><a href="http://www.cnblogs.com/lazycoding/archive/2012/10/03/2710738.html" target="_blank" rel="noopener">http://www.cnblogs.com/lazycoding/archive/2012/10/03/2710738.html</a></li>
-<li><a href="https://msdn.microsoft.com/zh-cn/library/5557y8b4.aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/zh-cn/library/5557y8b4.aspx</a></li>
-<li><a href="https://www.codeproject.com/Articles/469416/10-More-Visual-Studio-Debugging-Tips-for-Native-De" target="_blank" rel="noopener">https://www.codeproject.com/Articles/469416/10-More-Visual-Studio-Debugging-Tips-for-Native-De</a></li>
-<li><a href="https://www.codeproject.com/Articles/518159/10-Even-More-Visual-Studio-Debugging-Tips-for-Nati" target="_blank" rel="noopener">https://www.codeproject.com/Articles/518159/10-Even-More-Visual-Studio-Debugging-Tips-for-Nati</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/index?view=vs-2017" target="_blank" rel="noopener">VS2017 Debugging Docs</a></li>
-</ul>
-<h1 id="More-Reading"><a href="#More-Reading" class="headerlink" title="More Reading"></a>More Reading</h1><ul>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/python/tutorial-working-with-python-in-visual-studio-step-04-debugging?view=vs-2017" target="_blank" rel="noopener">Running Python Code in the Debugger</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/debug-live-azure-applications?view=vs-2017" target="_blank" rel="noopener">Debug a Live Azure App</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/remote-debugging?view=vs-2017" target="_blank" rel="noopener">Remote Debugging</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/debugging-applications?view=vs-2017" target="_blank" rel="noopener">Debugging Applications</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/project-settings-for-a-cpp-debug-configuration?view=vs-2017" target="_blank" rel="noopener"><span style="color:red">Configure debugging</span></a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/graphics/visual-studio-graphics-diagnostics?view=vs-2017" target="_blank" rel="noopener">Use VS to Debug GPU Code</a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/graphics/graphics-log-document?view=vs-2017" target="_blank" rel="noopener"><span style="color:red">Understanding information in Fix</span></a></li>
-<li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-debug-from-a-dll-project?view=vs-2017" target="_blank" rel="noopener">Debug from another exe</a></li>
-</ul>
-
-          
+          Change the execution flow
+A typical debugging situation is to analyze why a function call failed by stepping through. When another function that finds a function call returns an error and does not res
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Programming/VS2017-Debugging-Tips/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -761,160 +586,46 @@
       
         
           
-            <table>
-<thead>
-<tr>
-<th style="text-align:center">Abbreviation</th>
-<th style="text-align:left">Full Name</th>
-<th style="text-align:left">Related Link</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">AGP</td>
-<td style="text-align:left">Accelerated Graphics Port</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">BSP</td>
-<td style="text-align:left">Binary Space Partition</td>
-<td style="text-align:left"><a href="https://en.wikipedia.org/wiki/Binary_space_partitioning" target="_blank" rel="noopener">wiki</a></td>
-</tr>
-<tr>
-<td style="text-align:center">CB Test</td>
-<td style="text-align:left">Certification Body Test</td>
-<td style="text-align:left"><a href="https://www.iecee.org/certification/certificates/" target="_blank" rel="noopener">IECEE</a></td>
-</tr>
-<tr>
-<td style="text-align:center">COM</td>
-<td style="text-align:left">Components Object Model</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">CSO</td>
-<td style="text-align:left">Compiled Shader Object</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">DLL</td>
-<td style="text-align:left">Dynamic-Link Library</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">DMA</td>
-<td style="text-align:left">Direct Memory Access</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">DVI</td>
-<td style="text-align:left">Digital Visual Interface</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">DXGI</td>
-<td style="text-align:left">DirectX Graphics Infrastructure</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">FBX</td>
-<td style="text-align:left">Filmbox (a 3D Asset exchange format)</td>
-<td style="text-align:left"><a href="https://www.autodesk.com/products/fbx/overview" target="_blank" rel="noopener">Autodesk</a></td>
-</tr>
-<tr>
-<td style="text-align:center">GART</td>
-<td style="text-align:left">Graphics Address Remapping Table</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">GDI</td>
-<td style="text-align:left">Windows Graphics Device Interface</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">GUID</td>
-<td style="text-align:left">Global Unique Identifier; (<strong>5 Types:</strong> date-time &amp; MAC address; DCE Security; MD5 hash &amp; namespace; random; SHA-1 hash &amp; namespace)</td>
-<td style="text-align:left"><a href="https://betterexplained.com/articles/the-quick-guide-to-guids/" target="_blank" rel="noopener">quick guide</a>;  <a href="https://msdn.microsoft.com/en-us/library/system.guid%28v=vs.110%29.aspx" target="_blank" rel="noopener">msdn</a>; <a href="http://guid.one/" target="_blank" rel="noopener">guid</a></td>
-</tr>
-<tr>
-<td style="text-align:center">HDMI</td>
-<td style="text-align:left">High-Definition Multimedia Interface</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">HDR</td>
-<td style="text-align:left">High Dynamic Range</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">IOMMU</td>
-<td style="text-align:left">Input-Output Memory Management Unit</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">PCH</td>
-<td style="text-align:left">Platform Controller Hub</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">PCIE</td>
-<td style="text-align:left">Peripheral Component Interconnect Express</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">RPC</td>
-<td style="text-align:left">Remote Procedure Call</td>
-<td style="text-align:left"><a href="https://en.wikipedia.org/wiki/Remote_procedure_call" target="_blank" rel="noopener">wiki</a></td>
-</tr>
-<tr>
-<td style="text-align:center">RPM</td>
-<td style="text-align:left">Revolutions Per Minute</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">SDR</td>
-<td style="text-align:left">Software-Defined Radio (v.s. HDR)</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">TBB</td>
-<td style="text-align:left">Threading Building Blocks (Intel)</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">TLS</td>
-<td style="text-align:left">Transport Layer Security</td>
-<td style="text-align:left"><a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank" rel="noopener">wiki</a>; <a href="https://tools.ietf.org/html/rfc8446" target="_blank" rel="noopener">IETF</a></td>
-</tr>
-<tr>
-<td style="text-align:center">VGA</td>
-<td style="text-align:left">Video Graphics Array connector (15-pin)</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">WDDM</td>
-<td style="text-align:left">Windows Display Driver Model</td>
-<td style="text-align:left"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-display-driver-model-design-guide" target="_blank" rel="noopener">design guide</a>; <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-and-later-display-driver-model-operation-flow" target="_blank" rel="noopener">workflow</a></td>
-</tr>
-<tr>
-<td style="text-align:center">WRL</td>
-<td style="text-align:left">Windows Runtime Library</td>
-<td style="text-align:left"><a href="https://docs.microsoft.com/en-us/cpp/windows/windows-runtime-cpp-template-library-wrl" target="_blank" rel="noopener">WRL</a>; <a href="https://docs.microsoft.com/en-us/windows/uwp/cpp-and-winrt-apis/index" target="_blank" rel="noopener">WinRT</a></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="Useful-Tools"><a href="#Useful-Tools" class="headerlink" title="Useful Tools"></a>Useful Tools</h3><ul>
-<li>QT: <a href="https://resources.qt.io/resources-by-content-type-videos-demos-tutorials" target="_blank" rel="noopener">https://resources.qt.io/resources-by-content-type-videos-demos-tutorials</a></li>
-<li>Openframeworks: <a href="https://openframeworks.cc/" target="_blank" rel="noopener">https://openframeworks.cc/</a></li>
-<li>Jenkins</li>
-<li>Visual Leak Detector</li>
-<li>Bullseye</li>
-<li>WinUSB</li>
-<li>Unreal</li>
-<li>Arnold</li>
-</ul>
-
           
+
+
+Abbreviation
+Full Name
+Related Link
+
+
+
+
+AGP
+Accelerated Graphics Port
+
+
+
+BSP
+Binary Space Partition
+wiki
+
+
+CB Test
+Certification Body Test
+IECEE
+
+
+COM
+Components Object Model
+
+
+
+CSO
+Compiled Shader
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Graphics/CG-Abbreviation-Collection/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1070,19 +781,23 @@
       
         
           
-            <blockquote>
-<p>Refer to <a href="https://blog.csdn.net/sinat_14891561/article/details/74941333" target="_blank" rel="noopener">https://blog.csdn.net/sinat_14891561/article/details/74941333</a></p>
-</blockquote>
-<h2 id="Basic-Env"><a href="#Basic-Env" class="headerlink" title="Basic Env:"></a>Basic Env:</h2><ul>
-<li>Platform: macOS High Sierra</li>
-<li>Xcode: 9.4.1</li>
-<li>OpenGL: 4.1</li>
-</ul>
-<h2 id="Suggestion"><a href="#Suggestion" class="headerlink" title="Suggestion"></a>Suggestion</h2><p>Even though we can compile and install GLFW&amp;GLEW manually, I still strongly recommend installation by <em>home-brew</em>, especially for those who have already installed brew.</p>
-<h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a><strong>Issue</strong></h2><p><em>Header Search Paths</em> as well as <em>Library Search Paths</em> in Search Paths (Buildings) should be declared specifically. <code>/usr/local/include/**</code> may cause ERRORs like <code>#include nested too deeply</code>, because other libraries might exist in this folder.</p>
-<p>The solution is to use <code>usr/local/include/glad</code> instead. However, another ERROR will be caused in <em>glad.c</em>, indicating that <em>&lt;glad/glad.h&gt;</em> cannot be found. Modify it into <em>&lt;glad.h&gt;</em>. <em>&lt;KHR/khrplatform.h&gt;</em>, <em>&lt;GL/glew.h&gt;</em> and <em>&lt;GLFW/glfw.h&gt;</em> are also the same.</p>
-
           
+Refer to https://blog.csdn.net/sinat_14891561/article/details/74941333
+
+Basic Env:
+Platform: macOS High Sierra
+Xcode: 9.4.1
+OpenGL: 4.1
+
+SuggestionEven though we can compile and install GLFW&amp;GLEW
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Graphics/OpenGL-Env-in-Mac/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1238,9 +953,16 @@
       
         
           
-            <p>Here are some notes and issues I found when I review <em>C++ Primer, 5e</em>.</p>
+          Here are some notes and issues I found when I review C++ Primer, 5e.
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Language/Notes-of-C-Primer/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

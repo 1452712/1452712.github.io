@@ -108,20 +108,53 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lumina Wang">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Change the execution flow A typical debugging situation is to analyze why a function call failed by stepping through. When another function that finds a function call returns an error and does not res">
+<meta name="keywords" content="Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS2017 Debugging Tips">
+<meta property="og:url" content="http://yoursite.com/Programming/VS2017-Debugging-Tips/index.html">
 <meta property="og:site_name" content="Lumina Wang">
+<meta property="og:description" content="Change the execution flow A typical debugging situation is to analyze why a function call failed by stepping through. When another function that finds a function call returns an error and does not res">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image1-16.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image2-18.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image3-20.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image4-22.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image5-24.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image6-26.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image7-28.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image9-32.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image24-59.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image25-61.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image10-34.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image8-30.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image11-36.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image12-37.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image13-38.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image14-40.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image15-42.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image16-44.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image17-46.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image18-47.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image19-49.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image20-51.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image21-53.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image22-55.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image23-57.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image26-63.png">
+<meta property="og:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image27-65.png">
+<meta property="og:updated_time" content="2018-09-19T15:50:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lumina Wang">
+<meta name="twitter:title" content="VS2017 Debugging Tips">
+<meta name="twitter:description" content="Change the execution flow A typical debugging situation is to analyze why a function call failed by stepping through. When another function that finds a function call returns an error and does not res">
+<meta name="twitter:image" content="http://yoursite.com/contents/images/VS2017-Debugging-Tips/image1-16.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/Programming/VS2017-Debugging-Tips/"/>
 
 
 
@@ -131,7 +164,7 @@
   };
 </script>
 
-  <title>Lumina Wang</title>
+  <title>VS2017 Debugging Tips | Lumina Wang</title>
   
 
 
@@ -178,8 +211,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -216,7 +248,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
@@ -276,9 +308,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -310,11 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Programming/VS2017-Debugging-Tips/" itemprop="url">
-                  VS2017 Debugging Tips
-                </a>
+          <h1 class="post-title" itemprop="name headline">VS2017 Debugging Tips
               
             
           </h1>
@@ -407,9 +435,7 @@
       
 
       
-        
-          
-            <h1 id="Change-the-execution-flow"><a href="#Change-the-execution-flow" class="headerlink" title="Change the execution flow"></a>Change the execution flow</h1><p><img src="/contents/images/VS2017-Debugging-Tips/image1-16.png" alt="Change the Execution Flow"></p>
+        <h1 id="Change-the-execution-flow"><a href="#Change-the-execution-flow" class="headerlink" title="Change the execution flow"></a>Change the execution flow</h1><p><img src="/contents/images/VS2017-Debugging-Tips/image1-16.png" alt="Change the Execution Flow"></p>
 <p>A typical debugging situation is to analyze why a function call failed by stepping through. When another function that finds a function call returns an error and does not restart, use the yellow statement to identify the statement you want to execute next, thus changing the code location where the thread will execute next.</p>
 <p>Grab the yellow arrow (the execution pointer) on the left and move the yellow arrow  to the line above the method you want to step into. Be careful Moving the pointer cannot revert your application to an earlier app state.</p>
 <h1 id="Watch-Windows"><a href="#Watch-Windows" class="headerlink" title="Watch Windows"></a>Watch Windows</h1><h2 id="Pseudo-variables-in-Watch-Window"><a href="#Pseudo-variables-in-Watch-Window" class="headerlink" title="Pseudo-variables in Watch Window"></a>Pseudo-variables in Watch Window</h2><p>The Watch windows or the QuickWatch dialog support some special (debugger-recognized) variables called pseudo variables. The documented ones refer to <a href="https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables?view=vs-2017" target="_blank" rel="noopener">MS Docs</a></p>
@@ -593,8 +619,6 @@
 <li><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-debug-from-a-dll-project?view=vs-2017" target="_blank" rel="noopener">Debug from another exe</a></li>
 </ul>
 
-          
-        
       
     </div>
 
@@ -612,503 +636,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Graphics/CG-Abbreviation-Collection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lumina[Jiahui] Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lumina Wang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Graphics/CG-Abbreviation-Collection/" itemprop="url">
-                  CG Abbreviation Collection
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-20 23:19:47" itemprop="dateCreated datePublished" datetime="2018-08-20T23:19:47+08:00">2018-08-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-08-21 00:18:53" itemprop="dateModified" datetime="2018-08-21T00:18:53+08:00">2018-08-21</time>
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Graphics/" itemprop="url" rel="index"><span itemprop="name">Graphics</span></a></span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Notes/" rel="tag"># Notes</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <table>
-<thead>
-<tr>
-<th style="text-align:center">Abbreviation</th>
-<th style="text-align:left">Full Name</th>
-<th style="text-align:left">Related Link</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">AGP</td>
-<td style="text-align:left">Accelerated Graphics Port</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">BSP</td>
-<td style="text-align:left">Binary Space Partition</td>
-<td style="text-align:left"><a href="https://en.wikipedia.org/wiki/Binary_space_partitioning" target="_blank" rel="noopener">wiki</a></td>
-</tr>
-<tr>
-<td style="text-align:center">CB Test</td>
-<td style="text-align:left">Certification Body Test</td>
-<td style="text-align:left"><a href="https://www.iecee.org/certification/certificates/" target="_blank" rel="noopener">IECEE</a></td>
-</tr>
-<tr>
-<td style="text-align:center">COM</td>
-<td style="text-align:left">Components Object Model</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">CSO</td>
-<td style="text-align:left">Compiled Shader Object</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">DLL</td>
-<td style="text-align:left">Dynamic-Link Library</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">DMA</td>
-<td style="text-align:left">Direct Memory Access</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">DVI</td>
-<td style="text-align:left">Digital Visual Interface</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">DXGI</td>
-<td style="text-align:left">DirectX Graphics Infrastructure</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">FBX</td>
-<td style="text-align:left">Filmbox (a 3D Asset exchange format)</td>
-<td style="text-align:left"><a href="https://www.autodesk.com/products/fbx/overview" target="_blank" rel="noopener">Autodesk</a></td>
-</tr>
-<tr>
-<td style="text-align:center">GART</td>
-<td style="text-align:left">Graphics Address Remapping Table</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">GDI</td>
-<td style="text-align:left">Windows Graphics Device Interface</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">GUID</td>
-<td style="text-align:left">Global Unique Identifier; (<strong>5 Types:</strong> date-time &amp; MAC address; DCE Security; MD5 hash &amp; namespace; random; SHA-1 hash &amp; namespace)</td>
-<td style="text-align:left"><a href="https://betterexplained.com/articles/the-quick-guide-to-guids/" target="_blank" rel="noopener">quick guide</a>;  <a href="https://msdn.microsoft.com/en-us/library/system.guid%28v=vs.110%29.aspx" target="_blank" rel="noopener">msdn</a>; <a href="http://guid.one/" target="_blank" rel="noopener">guid</a></td>
-</tr>
-<tr>
-<td style="text-align:center">HDMI</td>
-<td style="text-align:left">High-Definition Multimedia Interface</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">HDR</td>
-<td style="text-align:left">High Dynamic Range</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">IOMMU</td>
-<td style="text-align:left">Input-Output Memory Management Unit</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">PCH</td>
-<td style="text-align:left">Platform Controller Hub</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">PCIE</td>
-<td style="text-align:left">Peripheral Component Interconnect Express</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">RPC</td>
-<td style="text-align:left">Remote Procedure Call</td>
-<td style="text-align:left"><a href="https://en.wikipedia.org/wiki/Remote_procedure_call" target="_blank" rel="noopener">wiki</a></td>
-</tr>
-<tr>
-<td style="text-align:center">RPM</td>
-<td style="text-align:left">Revolutions Per Minute</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">SDR</td>
-<td style="text-align:left">Software-Defined Radio (v.s. HDR)</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">TBB</td>
-<td style="text-align:left">Threading Building Blocks (Intel)</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">TLS</td>
-<td style="text-align:left">Transport Layer Security</td>
-<td style="text-align:left"><a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank" rel="noopener">wiki</a>; <a href="https://tools.ietf.org/html/rfc8446" target="_blank" rel="noopener">IETF</a></td>
-</tr>
-<tr>
-<td style="text-align:center">VGA</td>
-<td style="text-align:left">Video Graphics Array connector (15-pin)</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:center">WDDM</td>
-<td style="text-align:left">Windows Display Driver Model</td>
-<td style="text-align:left"><a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-display-driver-model-design-guide" target="_blank" rel="noopener">design guide</a>; <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-and-later-display-driver-model-operation-flow" target="_blank" rel="noopener">workflow</a></td>
-</tr>
-<tr>
-<td style="text-align:center">WRL</td>
-<td style="text-align:left">Windows Runtime Library</td>
-<td style="text-align:left"><a href="https://docs.microsoft.com/en-us/cpp/windows/windows-runtime-cpp-template-library-wrl" target="_blank" rel="noopener">WRL</a>; <a href="https://docs.microsoft.com/en-us/windows/uwp/cpp-and-winrt-apis/index" target="_blank" rel="noopener">WinRT</a></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="Useful-Tools"><a href="#Useful-Tools" class="headerlink" title="Useful Tools"></a>Useful Tools</h3><ul>
-<li>QT: <a href="https://resources.qt.io/resources-by-content-type-videos-demos-tutorials" target="_blank" rel="noopener">https://resources.qt.io/resources-by-content-type-videos-demos-tutorials</a></li>
-<li>Openframeworks: <a href="https://openframeworks.cc/" target="_blank" rel="noopener">https://openframeworks.cc/</a></li>
-<li>Jenkins</li>
-<li>Visual Leak Detector</li>
-<li>Bullseye</li>
-<li>WinUSB</li>
-<li>Unreal</li>
-<li>Arnold</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Graphics/OpenGL-Env-in-Mac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lumina[Jiahui] Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lumina Wang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Graphics/OpenGL-Env-in-Mac/" itemprop="url">
-                  OpenGL Env in Mac
-                </a>
-              
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
+              <a href="/Graphics/CG-Abbreviation-Collection/" rel="next" title="CG Abbreviation Collection">
+                <i class="fa fa-chevron-left"></i> CG Abbreviation Collection
+              </a>
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-07-15 01:06:55 / Modified: 01:36:20" itemprop="dateCreated datePublished" datetime="2018-07-15T01:06:55+08:00">2018-07-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Graphics/" itemprop="url" rel="index"><span itemprop="name">Graphics</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <blockquote>
-<p>Refer to <a href="https://blog.csdn.net/sinat_14891561/article/details/74941333" target="_blank" rel="noopener">https://blog.csdn.net/sinat_14891561/article/details/74941333</a></p>
-</blockquote>
-<h2 id="Basic-Env"><a href="#Basic-Env" class="headerlink" title="Basic Env:"></a>Basic Env:</h2><ul>
-<li>Platform: macOS High Sierra</li>
-<li>Xcode: 9.4.1</li>
-<li>OpenGL: 4.1</li>
-</ul>
-<h2 id="Suggestion"><a href="#Suggestion" class="headerlink" title="Suggestion"></a>Suggestion</h2><p>Even though we can compile and install GLFW&amp;GLEW manually, I still strongly recommend installation by <em>home-brew</em>, especially for those who have already installed brew.</p>
-<h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a><strong>Issue</strong></h2><p><em>Header Search Paths</em> as well as <em>Library Search Paths</em> in Search Paths (Buildings) should be declared specifically. <code>/usr/local/include/**</code> may cause ERRORs like <code>#include nested too deeply</code>, because other libraries might exist in this folder.</p>
-<p>The solution is to use <code>usr/local/include/glad</code> instead. However, another ERROR will be caused in <em>glad.c</em>, indicating that <em>&lt;glad/glad.h&gt;</em> cannot be found. Modify it into <em>&lt;glad.h&gt;</em>. <em>&lt;KHR/khrplatform.h&gt;</em>, <em>&lt;GL/glew.h&gt;</em> and <em>&lt;GLFW/glfw.h&gt;</em> are also the same.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -1118,172 +675,19 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Language/Notes-of-C-Primer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lumina[Jiahui] Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lumina Wang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Language/Notes-of-C-Primer/" itemprop="url">
-                  Notes of C++ Primer
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-07-12 00:50:52 / Modified: 00:56:56" itemprop="dateCreated datePublished" datetime="2018-07-12T00:50:52+08:00">2018-07-12</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Language/" itemprop="url" rel="index"><span itemprop="name">Language</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Here are some notes and issues I found when I review <em>C++ Primer, 5e</em>.</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -1304,8 +708,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1406,6 +819,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Change-the-execution-flow"><span class="nav-number">1.</span> <span class="nav-text">Change the execution flow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Watch-Windows"><span class="nav-number">2.</span> <span class="nav-text">Watch Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pseudo-variables-in-Watch-Window"><span class="nav-number">2.1.</span> <span class="nav-text">Pseudo-variables in Watch Window</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Format-Specifiers"><span class="nav-number">2.2.</span> <span class="nav-text">Format Specifiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-Visualizer"><span class="nav-number">2.3.</span> <span class="nav-text">String Visualizer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#View-Return-Values-for-Functions"><span class="nav-number">3.</span> <span class="nav-text">View Return Values for Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Disassembly-Code"><span class="nav-number">4.</span> <span class="nav-text">Disassembly Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Breakpoints"><span class="nav-number">5.</span> <span class="nav-text">Breakpoints</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-to-Cursor"><span class="nav-number">5.1.</span> <span class="nav-text">Run to Cursor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-to-a-Function-Specified-by-Name"><span class="nav-number">5.2.</span> <span class="nav-text">Run to a Function Specified by Name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Situation"><span class="nav-number">5.3.</span> <span class="nav-text">Other Situation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Memory"><span class="nav-number">6.</span> <span class="nav-text">Memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multithread"><span class="nav-number">7.</span> <span class="nav-text">Multithread</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Thread-Markder"><span class="nav-number">7.1.</span> <span class="nav-text">Thread Markder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View-the-Location-of-Threads"><span class="nav-number">7.2.</span> <span class="nav-text">View the Location of Threads</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Flagging-and-Unflagging-Threads"><span class="nav-number">7.3.</span> <span class="nav-text">Flagging and Unflagging Threads</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Freezing-and-Thawing-Thread-Execution"><span class="nav-number">7.4.</span> <span class="nav-text">Freezing and Thawing Thread Execution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Switch-Between-Processes"><span class="nav-number">7.5.</span> <span class="nav-text">Switch Between Processes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-a-Breakpoint-on-a-Specific-Process"><span class="nav-number">7.6.</span> <span class="nav-text">Set a Breakpoint on a Specific Process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-a-Breakpoint-on-a-Specific-Thread"><span class="nav-number">7.7.</span> <span class="nav-text">Set a Breakpoint on a Specific Thread</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step-into-Specific"><span class="nav-number">8.</span> <span class="nav-text">Step into Specific</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Snapshot-Debugger"><span class="nav-number">9.</span> <span class="nav-text">Snapshot Debugger</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Exception"><span class="nav-number">10.</span> <span class="nav-text">Exception</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Break-into-Code-on-Handled-Exceptions"><span class="nav-number">10.1.</span> <span class="nav-text">Break into Code on Handled Exceptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-Conditions-to-an-Exception"><span class="nav-number">10.2.</span> <span class="nav-text">Add Conditions to an Exception</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GPU-Debugging"><span class="nav-number">11.</span> <span class="nav-text">GPU Debugging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuring-GPU-Debugging"><span class="nav-number">11.1.</span> <span class="nav-text">Configuring GPU Debugging</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Other-Tips"><span class="nav-number">12.</span> <span class="nav-text">Other Tips</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">13.</span> <span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#More-Reading"><span class="nav-number">14.</span> <span class="nav-text">More Reading</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1533,6 +962,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
 
   
 

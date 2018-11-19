@@ -39,7 +39,7 @@ updated:
 | WRL | Windows Runtime Library | [WRL](https://docs.microsoft.com/en-us/cpp/windows/windows-runtime-cpp-template-library-wrl); [WinRT](https://docs.microsoft.com/en-us/windows/uwp/cpp-and-winrt-apis/index)|
 * * *
 
-### Useful Tools
+## Useful Tools
 
 - QT: https://resources.qt.io/resources-by-content-type-videos-demos-tutorials
 - Openframeworks: https://openframeworks.cc/
@@ -47,5 +47,11 @@ updated:
 - Visual Leak Detector
 - Bullseye
 - WinUSB
-- Unreal
+- [Unreal](https://www.unrealengine.com/en-US/ue4-on-github)
 - Arnold
+
+## Common "Slang"
+
+- UV Mapping:
+  Suface Parameterization;
+  Texture Coordinate Fundation

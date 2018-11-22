@@ -8,6 +8,7 @@ updated:
 ---
 
 <!-- more -->
+## Abbreviation
 
 | Abbreviation | Full Name | Related Link|
 | :------: | :------ | :------ |
@@ -55,7 +56,7 @@ updated:
 - UV Mapping:
   Suface Parameterization;
   Texture Coordinate Fundation
-  
+
 - Mip:
   Multim in Parvo (Latin)
   (i.e. much in a small space)

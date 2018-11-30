@@ -53,10 +53,10 @@ updated:
 
 ## Common "Slang"
 
-- UV Mapping:
-  Suface Parameterization;
-  Texture Coordinate Fundation
-
-- Mip:
-  Multim in Parvo (Latin)
-  (i.e. much in a small space)
+- UV Mapping: Suface Parameterization/Texture Coordinate Fundation
+- Mip: Multim in Parvo (Latin)(i.e. much in a small space)
+- TLB: Translation Lookaside Buffer
+- TIN: Triangular Irregular Network
+- BVH: Bounding Volume Hierarchy
+- BSP: Binary Space Partitioning (A spatical data structure)
+- CSG: Constructive Solid Geometry

@@ -7,7 +7,10 @@ tags:
 updated:
 ---
 
+Abbreviation collection when learning CG.
+
 <!-- more -->
+
 ## Abbreviation
 
 | Abbreviation | Full Name | Related Link|

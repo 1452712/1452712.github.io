@@ -8,6 +8,10 @@ tags:
 - macOS
 updated:
 ---
+
+Introduce how to set up the environment of OpenGL in macOS.
+<!-- more -->
+
 > Refer to https://blog.csdn.net/sinat_14891561/article/details/74941333
 
 ## Basic Env:

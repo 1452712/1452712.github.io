@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Debugging Tips of Pix (GPU Frame Capture Tools).">
+<meta name="keywords" content="Notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pix Debugging Tips">
+<meta property="og:url" content="http://yoursite.com/Graphics/Pix-Debugging-Tips/index.html">
+<meta property="og:site_name" content="Lumina Wang">
+<meta property="og:description" content="Debugging Tips of Pix (GPU Frame Capture Tools).">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/contents/images/Pix-Debugging-Tips/Timeline.PNG">
+<meta property="og:image" content="http://yoursite.com/contents/images/Pix-Debugging-Tips/Event_list.PNG">
+<meta property="og:image" content="http://yoursite.com/contents/images/Pix-Debugging-Tips/Event_list_counters.PNG">
+<meta property="og:image" content="http://yoursite.com/contents/images/Pix-Debugging-Tips/Pipeline.PNG">
+<meta property="og:image" content="http://yoursite.com/contents/images/Pix-Debugging-Tips/Dr_pix.PNG">
+<meta property="og:image" content="http://yoursite.com/contents/images/Pix-Debugging-Tips/Pixel_History.PNG">
+<meta property="og:image" content="http://yoursite.com/contents/images/Pix-Debugging-Tips/Graphics_object_view.PNG">
+<meta property="og:image" content="http://yoursite.com/contents/images/Pix-Debugging-Tips/Shader_debugger.PNG">
+<meta property="og:updated_time" content="2018-12-01T04:56:13.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pix Debugging Tips">
+<meta name="twitter:description" content="Debugging Tips of Pix (GPU Frame Capture Tools).">
+<meta name="twitter:image" content="http://yoursite.com/contents/images/Pix-Debugging-Tips/Timeline.PNG">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Graphics/Pix-Debugging-Tips/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Pix Debugging Tips | Lumina Wang</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lumina Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Graphics/Pix-Debugging-Tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lumina[Jiahui] Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lumina Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Pix Debugging Tips
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-01 11:59:00 / Modified: 12:56:13" itemprop="dateCreated datePublished" datetime="2018-12-01T11:59:00+08:00">2018-12-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Graphics/" itemprop="url" rel="index"><span itemprop="name">Graphics</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Debugging Tips of Pix (GPU Frame Capture Tools).<br><a id="more"></a></p>
+<h2 id="Basic-Usage"><a href="#Basic-Usage" class="headerlink" title="Basic Usage"></a>Basic Usage</h2><ol>
+<li>ENABLE Pix debug when compiling. </li>
+<li>Make sure the program use the same PLATFORM as Pix. Run Pix as admin.</li>
+<li>To launch an extra program by pix, in “Launch Win32” tick “Launch For GPU Capture” and input parameters in “Command line arguments”. Click Launch.</li>
+<li>For an immediate draw, add a pause in the code and click “GPU Capture” before rendering. Then run the program continually.</li>
+</ol>
+<h2 id="Understanding-the-Information-Captured-by-Pix"><a href="#Understanding-the-Information-Captured-by-Pix" class="headerlink" title="Understanding the Information Captured by Pix"></a>Understanding the Information Captured by Pix</h2><blockquote>
+<p><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/graphics/graphics-frame-analysis?view=vs-2017" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/visualstudio/debugger/graphics/graphics-frame-analysis?view=vs-2017</a></p>
+</blockquote>
+<h3 id="Timeline"><a href="#Timeline" class="headerlink" title="Timeline"></a>Timeline</h3><p>The timeline shows an overview of draw-call timings relative to one another.</p>
+<p><img src="/contents/images/Pix-Debugging-Tips/Timeline.PNG" alt="Timeline"></p>
+<h3 id="Event-List"><a href="#Event-List" class="headerlink" title="Event List"></a>Event List</h3><p>When you select an event in the event list, it’s reflected in the information; by using the event list in concert with other tools you can examine a rendering problem in detail to determine its cause.</p>
+<p><img src="/contents/images/Pix-Debugging-Tips/Event_list.PNG" alt="Event"></p>
+<p>Tick parameters in “Counters” for more information.</p>
+<p><img src="/contents/images/Pix-Debugging-Tips/Event_list_counters.PNG" alt="EventCounters"></p>
+<h3 id="Pipeline-Stages"><a href="#Pipeline-Stages" class="headerlink" title="Pipeline Stages"></a>Pipeline Stages</h3><blockquote>
+<p><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/graphics/graphics-pipeline-stages?view=vs-2017" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/visualstudio/debugger/graphics/graphics-pipeline-stages?view=vs-2017</a></p>
+</blockquote>
+<p><img src="/contents/images/Pix-Debugging-Tips/Pipeline.PNG" alt="Pipeline"></p>
+<h4 id="Input-Assembler"><a href="#Input-Assembler" class="headerlink" title="Input Assembler"></a>Input Assembler</h4><p>The Input Assembler reads index and vertex data specified by your app and assembles it for the graphics hardware.</p>
+<p>In the Pipeline Stages window, the Input Assembler output is visualized as a wireframe model. To take a closer look at the result, select <strong>IA</strong> in the <strong>Pipeline</strong> window to view the assembled vertices in full 3D using the Model Editor.</p>
+<p><strong>Note:</strong> If the POSITION semantic is not present in the input assembler output, then nothing is displayed in the Input Assembler stage.</p>
+<h4 id="Vertex-Shader"><a href="#Vertex-Shader" class="headerlink" title="Vertex Shader"></a>Vertex Shader</h4><p>The vertex shader stage processes vertices, typically performing operations such as transformation, skinning, and lighting. Vertex shaders produce the same number of vertices that they takes as input.</p>
+<p>In the Pipeline Stages window, the Vertex Shader output is visualized as a wireframe raster image. To take a closer look at the result, select Vertex Shader in the Graphics Pipeline Stages windows to view the processed vertices in the Image Editor.</p>
+<p><strong>Note:</strong> If the POSITION or SV_POSITION semantics are not present in the vertex shader output, then nothing is displayed in the Vertex Shader stage.</p>
+<h4 id="Hull-Shader-Direct3D-11-and-Direct3D-12-only"><a href="#Hull-Shader-Direct3D-11-and-Direct3D-12-only" class="headerlink" title="Hull Shader (Direct3D 11 and Direct3D 12 only)"></a>Hull Shader (Direct3D 11 and Direct3D 12 only)</h4><p>The hull shader stage processes control points that define a low-order surface such as a line, triangle, or quad. As output it produces a higher-order geometry patch and patch constants that are passed to the fixed-function tessellation stage.</p>
+<p>The hull shader stage is not visualized in the Pipeline Stages window.</p>
+<h4 id="Tessellator-Stage-Direct3D-11-and-Direct3D-12-only"><a href="#Tessellator-Stage-Direct3D-11-and-Direct3D-12-only" class="headerlink" title="Tessellator Stage (Direct3D 11 and Direct3D 12 only)"></a>Tessellator Stage (Direct3D 11 and Direct3D 12 only)</h4><p>The tessellator stage is a fixed function (non-programmable) hardware unit that preprocesses the domain represented by the output of the hull shader. As output, it creates a sampling pattern of the domain and a set of smaller primitives—points, lines, triangles—that connect these samples.</p>
+<p>The tessellator stage is not visualized in the Pipeline Stages window.</p>
+<h4 id="Domain-Shader-Direct3D-11-and-Direct3D-12-only"><a href="#Domain-Shader-Direct3D-11-and-Direct3D-12-only" class="headerlink" title="Domain Shader (Direct3D 11 and Direct3D 12 only)"></a>Domain Shader (Direct3D 11 and Direct3D 12 only)</h4><p>The domain shader stage processes higher-order geometry patches from the Hull shader, together tessellation factors from the tessellation stage. The tessellation factors can be include tessellator input factors as well as output factors. As output, it calculates the vertex position of a point on the output patch according the tessellator factors.</p>
+<p>The domain shader stage is not visualized in the Pipeline Stages window.</p>
+<h4 id="Geometry-Shader"><a href="#Geometry-Shader" class="headerlink" title="Geometry Shader"></a>Geometry Shader</h4><p>The geometry shader stage processes entire primitives—points, lines, or triangles—along with optional vertex data for edge-adjacent primitives. Unlike vertex shaders, geometry shaders can produce more or fewer primitives than they take as input.</p>
+<p>In the Pipeline Stages window, geometry shader output is visualized as a wireframe raster image. To take a closer look at the result, select Geometry Shader in the Graphics Pipeline Stages window to view the processed primitives in the Image Editor.</p>
+<h4 id="Stream-Output-Stage"><a href="#Stream-Output-Stage" class="headerlink" title="Stream Output Stage"></a>Stream Output Stage</h4><p>The stream output stage can intercept transformed primitives prior to rasterization and write them to memory; from there the data can be recirculated as input to earlier stages of the graphics pipeline or be read back by the CPU.</p>
+<p>The stream output stage is not visualized in the Pipeline Stages window.</p>
+<h4 id="Rasterizer-Stage"><a href="#Rasterizer-Stage" class="headerlink" title="Rasterizer Stage"></a>Rasterizer Stage</h4><p>The rasterizer stage is a fixed function (non-programmable) hardware unit that converts vector primitives—points, lines, triangles—into a raster image by performing scan-line conversion. During rasterization vertices are transformed into the homogenous clip-space and clipped. As output, pixel shaders are mapped and per-vertex attributes are interpolated across the primitive and made ready for the pixel shader.</p>
+<p>The rasterizer stage is not visualized in the Pipeline Stages window.</p>
+<h4 id="Pixel-Shader"><a href="#Pixel-Shader" class="headerlink" title="Pixel Shader"></a>Pixel Shader</h4><p>The pixel shader stage processes rasterized primitives together with interpolated vertex data to generate per-pixel values such as color and depth.</p>
+<p>In the Pipeline Stages window, pixel shader output is visualized as a full-color raster image. To take a closer look at the result, select Pixel Shader in the Graphics Pipeline Stages window to view the processed primitives in the Image Editor.</p>
+<h4 id="Output-Merger"><a href="#Output-Merger" class="headerlink" title="Output Merger"></a>Output Merger</h4><p>The output merger stage combines the effect of newly-rendered pixels together with the existing contents of their corresponding buffers—color, depth, and stencil—to produce new values in these buffers.</p>
+<p>In the Pipeline Stages window, output merger output is visualized as a full-color raster image. To take a closer look at the results, select Output Merger in the Graphics Pipeline Stages window to view the merged framebuffer.</p>
+<p>As the following image shows, with Pix we can collect more information than with VS Graphics Tools. Moreover, Pix can be used by wide range of applications.</p>
+<p><img src="/contents/images/Pix-Debugging-Tips/Dr_pix.PNG" alt="Dr"></p>
+<h3 id="Call-Stack"><a href="#Call-Stack" class="headerlink" title="Call Stack"></a>Call Stack</h3><p>This one is similar with the call stack in VS, while it records detailed GPU methods one by one.</p>
+<h3 id="Pixel-History"><a href="#Pixel-History" class="headerlink" title="Pixel History"></a>Pixel History</h3><p><img src="/contents/images/Pix-Debugging-Tips/Pixel_History.PNG" alt="PixelHistory"></p>
+<h3 id="Graphics-Object-Views"><a href="#Graphics-Object-Views" class="headerlink" title="Graphics Object Views"></a>Graphics Object Views</h3><p><img src="/contents/images/Pix-Debugging-Tips/Graphics_object_view.PNG" alt="GraphicsObjectViews"></p>
+<h3 id="Shader-Debugger"><a href="#Shader-Debugger" class="headerlink" title="Shader Debugger"></a>Shader Debugger</h3><p>With shader debugger, we can debug compiled shader code (e.g. .hlsl) just like other source code!</p>
+<p><img src="/contents/images/Pix-Debugging-Tips/Shader_debugger.PNG" alt="ShaderDebugger"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Notes/" rel="tag"># Notes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Programming/VS2017-Debugging-Tips/" rel="next" title="VS2017 Debugging Tips">
+                <i class="fa fa-chevron-left"></i> VS2017 Debugging Tips
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Language/CPP-Coding-Notes/" rel="prev" title="C++ Coding Notes">
+                C++ Coding Notes <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.JPG"
+                alt="Lumina[Jiahui] Wang" />
+            
+              <p class="site-author-name" itemprop="name">Lumina[Jiahui] Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/1452712" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:1452712@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/WangLumina" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Usage"><span class="nav-number">1.</span> <span class="nav-text">Basic Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Understanding-the-Information-Captured-by-Pix"><span class="nav-number">2.</span> <span class="nav-text">Understanding the Information Captured by Pix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Timeline"><span class="nav-number">2.1.</span> <span class="nav-text">Timeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-List"><span class="nav-number">2.2.</span> <span class="nav-text">Event List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pipeline-Stages"><span class="nav-number">2.3.</span> <span class="nav-text">Pipeline Stages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-Assembler"><span class="nav-number">2.3.1.</span> <span class="nav-text">Input Assembler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vertex-Shader"><span class="nav-number">2.3.2.</span> <span class="nav-text">Vertex Shader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hull-Shader-Direct3D-11-and-Direct3D-12-only"><span class="nav-number">2.3.3.</span> <span class="nav-text">Hull Shader (Direct3D 11 and Direct3D 12 only)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tessellator-Stage-Direct3D-11-and-Direct3D-12-only"><span class="nav-number">2.3.4.</span> <span class="nav-text">Tessellator Stage (Direct3D 11 and Direct3D 12 only)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Domain-Shader-Direct3D-11-and-Direct3D-12-only"><span class="nav-number">2.3.5.</span> <span class="nav-text">Domain Shader (Direct3D 11 and Direct3D 12 only)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Geometry-Shader"><span class="nav-number">2.3.6.</span> <span class="nav-text">Geometry Shader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stream-Output-Stage"><span class="nav-number">2.3.7.</span> <span class="nav-text">Stream Output Stage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Rasterizer-Stage"><span class="nav-number">2.3.8.</span> <span class="nav-text">Rasterizer Stage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pixel-Shader"><span class="nav-number">2.3.9.</span> <span class="nav-text">Pixel Shader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output-Merger"><span class="nav-number">2.3.10.</span> <span class="nav-text">Output Merger</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Call-Stack"><span class="nav-number">2.4.</span> <span class="nav-text">Call Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pixel-History"><span class="nav-number">2.5.</span> <span class="nav-text">Pixel History</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphics-Object-Views"><span class="nav-number">2.6.</span> <span class="nav-text">Graphics Object Views</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shader-Debugger"><span class="nav-number">2.7.</span> <span class="nav-text">Shader Debugger</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lumina[Jiahui] Wang</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

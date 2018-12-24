@@ -216,6 +216,7 @@ p4 diff -sd <path-to-resource>...|p4 -x- sync -f
 
 - [Handle](https://docs.microsoft.com/en-us/sysinternals/downloads/handle)
 - [Performance Monitor](https://www.windowscentral.com/how-use-performance-monitor-windows-10)
+- [Code Graph](https://marketplace.visualstudio.com/items?itemName=YaobinOuyang.CodeAtlas)
 - Pix
 - Process Explorer
 - SunLogin

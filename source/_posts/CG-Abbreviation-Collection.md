@@ -16,10 +16,12 @@ Abbreviation collection when learning CG.
 | Abbreviation | Full Name | Related Link|
 | :------: | :------ | :------ |
 | AGP | Accelerated Graphics Port | |
+| AWS | Amazon Web Service | |
 | BSP | Binary Space Partition| [wiki](https://en.wikipedia.org/wiki/Binary_space_partitioning) |
 | CB Test | Certification Body Test | [IECEE](https://www.iecee.org/certification/certificates/) |
 | COM | Components Object Model | |
 | CSO | Compiled Shader Object | |
+| CTAD | Class Template Argument Deduction | |
 | DLL | Dynamic-Link Library | |
 | DMA | Direct Memory Access | |
 | DVI | Digital Visual Interface | |
@@ -38,6 +40,7 @@ Abbreviation collection when learning CG.
 | SDR | Software-Defined Radio (v.s. HDR) | |
 | TBB | Threading Building Blocks (Intel) | |
 | TLS | Transport Layer Security | [wiki](https://en.wikipedia.org/wiki/Transport_Layer_Security); [IETF](https://tools.ietf.org/html/rfc8446) |
+| UMD | User-Mode Graphics Driver | |
 | VGA | Video Graphics Array connector (15-pin) | |
 | WDDM | Windows Display Driver Model | [design guide](https://docs.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-display-driver-model-design-guide); [workflow](https://docs.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-and-later-display-driver-model-operation-flow) |
 | WRL | Windows Runtime Library | [WRL](https://docs.microsoft.com/en-us/cpp/windows/windows-runtime-cpp-template-library-wrl); [WinRT](https://docs.microsoft.com/en-us/windows/uwp/cpp-and-winrt-apis/index)|

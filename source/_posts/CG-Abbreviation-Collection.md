@@ -1,13 +1,13 @@
 ---
-title: CG Abbreviation Collection
+title: Programming Abbreviation Collection
 date: 2018-08-20 23:19:47
 categories:
-- Graphics
+- Programming
 tags:
 updated:
 ---
 
-Abbreviation collection when learning CG.
+A collection of programming abbreviations.
 
 <!-- more -->
 
@@ -19,6 +19,7 @@ Abbreviation collection when learning CG.
 | AWS | Amazon Web Service | |
 | BSP | Binary Space Partition| [wiki](https://en.wikipedia.org/wiki/Binary_space_partitioning) |
 | CB Test | Certification Body Test | [IECEE](https://www.iecee.org/certification/certificates/) |
+| CICD | Continuous Integration & Continuous Delivery| [Part of Deployment Pipeline](https://en.wikipedia.org/wiki/Continuous_delivery); [CICD in the Wild](https://medium.com/@edzob/ci-and-cd-in-the-wild-b5ca8f71fa28) |
 | COM | Components Object Model | |
 | CSO | Compiled Shader Object | |
 | CTAD | Class Template Argument Deduction | |
@@ -33,8 +34,13 @@ Abbreviation collection when learning CG.
 | HDMI | High-Definition Multimedia Interface | |
 | HDR | High Dynamic Range | |
 | IOMMU | Input-Output Memory Management Unit | |
+| IaaS | Infrastructure as a Service | e.g. [AWS](https://aws.amazon.com) |
+| KPI | Key Performance Indicator | |
+| MBPS | megabit per second | |
+| MIPS | millions of instructions per second | |
 | PCH | Platform Controller Hub | |
 | PCIE | Peripheral Component Interconnect Express | |
+| PaaS | Platform as a Service | e.g. [Google App Engine](https://cloud.google.com/appengine/) |
 | RPC | Remote Procedure Call | [wiki](https://en.wikipedia.org/wiki/Remote_procedure_call) |
 | RPM | Revolutions Per Minute | |
 | SDR | Software-Defined Radio (v.s. HDR) | |
@@ -57,7 +63,7 @@ Abbreviation collection when learning CG.
 - [Unreal](https://www.unrealengine.com/en-US/ue4-on-github)
 - Arnold
 
-## Common "Slang"
+## Common "Slang" in Computer Graphics
 
 - UV Mapping: Suface Parameterization/Texture Coordinate Fundation
 - Mip: Multim in Parvo (Latin)(i.e. much in a small space)
@@ -66,3 +72,10 @@ Abbreviation collection when learning CG.
 - BVH: Bounding Volume Hierarchy
 - BSP: Binary Space Partitioning (A spatical data structure)
 - CSG: Constructive Solid Geometry
+- PBR: Physically Based Rendering (A rendering modes opposite to Classic mode)
+- AO: Ambient Occlusion
+- BSDF = BRDF + BTDF
+  - BSDF: Bidirectional Scattering Distribution Function
+  - BRDF: Bidirectional Reflectance Distribution Function
+  - BTDF: Bidirectional Transmittance Distribution Function
+  - Incident Light Beam => Specular Reflection + Specular Transmition + BSDF

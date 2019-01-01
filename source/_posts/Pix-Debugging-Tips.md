@@ -5,6 +5,7 @@ categories:
 - Graphics
 tags:
 - Notes
+updated:
 ---
 
 Debugging Tips of Pix (GPU Frame Capture Tools).

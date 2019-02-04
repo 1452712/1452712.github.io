@@ -33,18 +33,20 @@ A collection of programming abbreviations.
 | GUID | Global Unique Identifier; (**5 Types:** date-time & MAC address; DCE Security; MD5 hash & namespace; random; SHA-1 hash & namespace) | [quick guide](https://betterexplained.com/articles/the-quick-guide-to-guids/);  [msdn](https://msdn.microsoft.com/en-us/library/system.guid%28v=vs.110%29.aspx); [guid](http://guid.one/)|
 | HDMI | High-Definition Multimedia Interface | |
 | HDR | High Dynamic Range | |
-| IOMMU | Input-Output Memory Management Unit | |
+| IOMMU | Input-Output Memory Management Unit | Refer to Picture 1 |
 | IaaS | Infrastructure as a Service | e.g. [AWS](https://aws.amazon.com) |
 | KPI | Key Performance Indicator | |
 | MBPS | megabit per second | |
 | MIPS | millions of instructions per second | |
 | PCH | Platform Controller Hub | |
-| PCIE | Peripheral Component Interconnect Express | |
+| PCIE | Peripheral Component Interconnect Express | Refer to Picture 2 |
 | PaaS | Platform as a Service | e.g. [Google App Engine](https://cloud.google.com/appengine/) |
 | RPC | Remote Procedure Call | [wiki](https://en.wikipedia.org/wiki/Remote_procedure_call) |
 | RPM | Revolutions Per Minute | |
 | SDR | Software-Defined Radio (v.s. HDR) | |
+| SWD | Serial Wire Debug | An electrical interface | |
 | TBB | Threading Building Blocks (Intel) | |
+| TD | Test Data | |
 | TLS | Transport Layer Security | [wiki](https://en.wikipedia.org/wiki/Transport_Layer_Security); [IETF](https://tools.ietf.org/html/rfc8446) |
 | UMD | User-Mode Graphics Driver | |
 | VGA | Video Graphics Array connector (15-pin) | |
@@ -65,17 +67,28 @@ A collection of programming abbreviations.
 
 ## Common "Slang" in Computer Graphics
 
-- UV Mapping: Suface Parameterization/Texture Coordinate Fundation
-- Mip: Multim in Parvo (Latin)(i.e. much in a small space)
-- TLB: Translation Lookaside Buffer
-- TIN: Triangular Irregular Network
-- BVH: Bounding Volume Hierarchy
-- BSP: Binary Space Partitioning (A spatical data structure)
-- CSG: Constructive Solid Geometry
-- PBR: Physically Based Rendering (A rendering modes opposite to Classic mode)
 - AO: Ambient Occlusion
 - BSDF = BRDF + BTDF
   - BSDF: Bidirectional Scattering Distribution Function
   - BRDF: Bidirectional Reflectance Distribution Function
   - BTDF: Bidirectional Transmittance Distribution Function
   - Incident Light Beam => Specular Reflection + Specular Transmition + BSDF
+- BSP: Binary Space Partitioning (A spatical data structure)
+- BVH: Bounding Volume Hierarchy
+- CSG: Constructive Solid Geometry
+- GI: Global Illumination
+- TIN: Triangular Irregular Network
+- TLB: Translation Lookaside Buffer
+- Mip: Multim in Parvo (Latin)(i.e. much in a small space)
+- PBR: Physically Based Rendering (A rendering modes opposite to Classic mode)
+- UV Mapping: Suface Parameterization/Texture Coordinate Fundation
+
+## Apending Picture
+
+### IOMMU
+
+![IOMMU](/contents/images/Programming-Abbreviation-Collection/MMU_and_IOMMU.png)
+
+### PCI Express
+
+![PCI Express](/contents/images/Programming-Abbreviation-Collection/PCI_Express.png)

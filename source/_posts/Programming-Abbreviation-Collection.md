@@ -83,7 +83,7 @@ A collection of programming abbreviations.
 - PBR: Physically Based Rendering (A rendering modes opposite to Classic mode)
 - UV Mapping: Suface Parameterization/Texture Coordinate Fundation
 
-## Apending Picture
+## Appending Picture
 
 ### IOMMU
 

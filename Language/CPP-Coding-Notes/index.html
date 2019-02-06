@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Lumina Wang">
 <meta property="og:description" content="Some notes and issues I took from work.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-11T17:30:26.980Z">
+<meta property="og:updated_time" content="2019-02-06T14:33:13.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Coding Notes">
 <meta name="twitter:description" content="Some notes and issues I took from work.">
@@ -356,7 +356,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 12-12-2018 01:30:26" itemprop="dateModified" datetime="2018-12-12T01:30:26+08:00">12-12-2018</time>
+                <time title="Modified: 02-06-2019 22:33:13" itemprop="dateModified" datetime="2019-02-06T22:33:13+08:00">02-06-2019</time>
               
             
           </span>
@@ -408,10 +408,7 @@
 
       
         <p>Some notes and issues I took from work.<br><a id="more"></a></p>
-<h2 id="Define-Functions-with-Macro"><a href="#Define-Functions-with-Macro" class="headerlink" title="Define Functions with Macro"></a>Define Functions with Macro</h2><ul>
-<li>Macro Definition Example</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Windows SDK (winnt)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DECLSPEC_NOTHROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> (_MSC_VER &gt;= 1200) &amp;&amp; !defined(MIDL_PASS)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DECLSPEC_NOTHROW   __declspec(nothrow)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DECLSPEC_NOTHROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="comment">// ......</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _68K_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STDMETHODCALLTYPE       __cdecl</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STDMETHODCALLTYPE       __stdcall</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Windows SDK (combaseapi)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> COM_STDMETHOD_CAN_THROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COM_DECLSPEC_NOTHROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COM_DECLSPEC_NOTHROW DECLSPEC_NOTHROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="comment">// ......</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STDMETHOD(method)        virtual COM_DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE method</span></span><br></pre></td></tr></table></figure>
+<h2 id="Define-Functions-with-Macro"><a href="#Define-Functions-with-Macro" class="headerlink" title="Define Functions with Macro"></a>Define Functions with Macro</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Windows SDK (winnt)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DECLSPEC_NOTHROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> (_MSC_VER &gt;= 1200) &amp;&amp; !defined(MIDL_PASS)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DECLSPEC_NOTHROW   __declspec(nothrow)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DECLSPEC_NOTHROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="comment">// ......</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _68K_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STDMETHODCALLTYPE       __cdecl</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STDMETHODCALLTYPE       __stdcall</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Windows SDK (combaseapi)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> COM_STDMETHOD_CAN_THROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COM_DECLSPEC_NOTHROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COM_DECLSPEC_NOTHROW DECLSPEC_NOTHROW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="comment">// ......</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STDMETHOD(method)        virtual COM_DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE method</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>Usage Example</li>
 </ul>
@@ -932,6 +929,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
   

@@ -8,5 +8,9 @@ updated:
 mathjax: true
 ---
 
-Here are the catalog of series notes taken when reading papers related to graphics.
+Here is the catalog of series notes taken from reading materials related to graphics.
 <!-- more -->
+
+## Further Reading
+
+- [A trip through the Graphics Pipeline 2011](https://fgiesen.wordpress.com/2011/07/09/a-trip-through-the-graphics-pipeline-2011-index/)

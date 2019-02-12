@@ -5,6 +5,7 @@ categories:
 - Programming
 tags:
 updated:
+mathjax: true
 ---
 
 A collection of programming abbreviations.
@@ -67,7 +68,7 @@ A collection of programming abbreviations.
 
 ## Common "Slang" in Computer Graphics
 
-- AO: Ambient Occlusion
+- AO: Ambient Occlusion (A shading and rendering technique used to calculate how exposed each point in a scene is to ambient lighting.)
 - BSDF = BRDF + BTDF
   - BSDF: Bidirectional Scattering Distribution Function
   - BRDF: Bidirectional Reflectance Distribution Function

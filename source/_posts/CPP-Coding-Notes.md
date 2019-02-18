@@ -220,3 +220,17 @@ p4 diff -sd <path-to-resource>...|p4 -x- sync -f
 - Pix
 - Process Explorer
 - SunLogin
+
+## Using `.inl` files
+> https://stackoverflow.com/questions/1208028/significance-of-a-inl-file-in-c
+
+`.inl` files are never mandatory and have no special significance to the compiler. It's just a way of structuring your code that provides a hint to the humans that might read it.
+
+I use .inl files in two cases:
+
+- For definitions of inline functions.
+- For definitions of function templates.
+
+In both cases, I put the declarations of the functions in a header file, which is included by other files, then I #include the .inl file at the bottom of the header file.
+
+It separates the interface from the implementation and makes the header file a little easier to read. If you care about the implementation details, you can open the .inl file and read it. If you don't, you don't have to.

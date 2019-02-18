@@ -24,11 +24,13 @@ A collection of programming abbreviations.
 | COM | Components Object Model | |
 | CSO | Compiled Shader Object | |
 | CTAD | Class Template Argument Deduction | |
+| DAG | Directed Acyclic Graph (graph theory) | [wiki](https://en.wikipedia.org/wiki/Directed_acyclic_graph) |
 | DLL | Dynamic-Link Library | |
 | DMA | Direct Memory Access | |
 | DVI | Digital Visual Interface | |
 | DXGI | DirectX Graphics Infrastructure | |
 | FBX | Filmbox (a 3D Asset exchange format) | [Autodesk](https://www.autodesk.com/products/fbx/overview) |
+| FMAC | Floating Multiply-ACcumulate | |
 | GART | Graphics Address Remapping Table | |
 | GDI | Windows Graphics Device Interface | |
 | GUID | Global Unique Identifier; (**5 Types:** date-time & MAC address; DCE Security; MD5 hash & namespace; random; SHA-1 hash & namespace) | [quick guide](https://betterexplained.com/articles/the-quick-guide-to-guids/);  [msdn](https://msdn.microsoft.com/en-us/library/system.guid%28v=vs.110%29.aspx); [guid](http://guid.one/)|
@@ -53,6 +55,7 @@ A collection of programming abbreviations.
 | VGA | Video Graphics Array connector (15-pin) | |
 | WDDM | Windows Display Driver Model | [design guide](https://docs.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-display-driver-model-design-guide); [workflow](https://docs.microsoft.com/en-us/windows-hardware/drivers/display/windows-vista-and-later-display-driver-model-operation-flow) |
 | WRL | Windows Runtime Library | [WRL](https://docs.microsoft.com/en-us/cpp/windows/windows-runtime-cpp-template-library-wrl); [WinRT](https://docs.microsoft.com/en-us/windows/uwp/cpp-and-winrt-apis/index)|
+| XFB | Binary Device Interface File Format Header | [AXway File Broker](https://docs.axway.com/bundle/SecureTransport_536_AdministratorGuide_allOS_en_HTML5/page/Content/AdministratorsGuide/setup/c_st_aboutXFB_TO.htm) |
 * * *
 
 ## Useful Tools
@@ -69,6 +72,7 @@ A collection of programming abbreviations.
 ## Common "Slang" in Computer Graphics
 
 - AO: Ambient Occlusion (A shading and rendering technique used to calculate how exposed each point in a scene is to ambient lighting.)
+- AZDO: Approaching Zero Driver Overhead; [OpenGL Efficiency](https://www.khronos.org/assets/uploads/developers/library/2014-gdc/Khronos-OpenGL-Efficiency-GDC-Mar14.pdf)
 - BSDF = BRDF + BTDF
   - BSDF: Bidirectional Scattering Distribution Function
   - BRDF: Bidirectional Reflectance Distribution Function
@@ -83,6 +87,16 @@ A collection of programming abbreviations.
 - Mip: Multim in Parvo (Latin)(i.e. much in a small space)
 - PBR: Physically Based Rendering (A rendering modes opposite to Classic mode)
 - UV Mapping: Suface Parameterization/Texture Coordinate Fundation
+- VFX: Visual Effects, including:
+  - Special effects
+    - Phsical effects
+  - Digital effects (short to FX or digital FX)
+    - Matte paintings and stills
+    - Motion capture (Mo-Cap)
+    - Modelling
+    - Animation
+    - Compositing
+    - Simulation
 
 ## Appending Picture
 

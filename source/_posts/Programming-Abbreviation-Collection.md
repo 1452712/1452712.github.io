@@ -81,8 +81,11 @@ A collection of programming abbreviations.
 - BSP: Binary Space Partitioning (A spatical data structure)
 - BVH: Bounding Volume Hierarchy
 - CSG: Constructive Solid Geometry
+- DXR: DirectX Raytracing (A feature of Microsoft's DirectX that allows for HW real-time raytracing). [Announcement](https://blogs.msdn.microsoft.com/directx/2018/03/19/announcing-microsoft-directx-raytracing/).
 - GDDR: Graphics Double Data Rate
 - GI: Global Illumination
+- GPGPU: General Purpose computing on GPUs.
+  Performs non-specialized calculations which are typically be conducted by the CPU. Started from NVIDIA GeForce 3, CUDA allowed programmers to ignore the underlying graphical concepts in favor of more common high-performance computing concepts. Microsoft's DirectCompute and Apple/Khronos Group's OpenCL followed up later, which means that modern GPGPU pipelines can leverage the speed of a GPU without requiring full and explicit conversion of the data to a graphical form.
 - TIN: Triangular Irregular Network
 - TLB: Translation Lookaside Buffer
 - Mip: Multim in Parvo (Latin)(i.e. much in a small space)

@@ -81,6 +81,7 @@ A collection of programming abbreviations.
 - BSP: Binary Space Partitioning (A spatical data structure)
 - BVH: Bounding Volume Hierarchy
 - CSG: Constructive Solid Geometry
+- GDDR: Graphics Double Data Rate
 - GI: Global Illumination
 - TIN: Triangular Irregular Network
 - TLB: Translation Lookaside Buffer

@@ -47,6 +47,7 @@ A collection of programming abbreviations.
 | RPC | Remote Procedure Call | [wiki](https://en.wikipedia.org/wiki/Remote_procedure_call) |
 | RPM | Revolutions Per Minute | |
 | SDR | Software-Defined Radio (v.s. HDR) | |
+| SoC | System-on-a-Chip | |
 | SWD | Serial Wire Debug | An electrical interface | |
 | TBB | Threading Building Blocks (Intel) | |
 | TD | Test Data | |
@@ -86,6 +87,8 @@ A collection of programming abbreviations.
 - GI: Global Illumination
 - GPGPU: General Purpose computing on GPUs.
   Performs non-specialized calculations which are typically be conducted by the CPU. Started from NVIDIA GeForce 3, CUDA allowed programmers to ignore the underlying graphical concepts in favor of more common high-performance computing concepts. Microsoft's DirectCompute and Apple/Khronos Group's OpenCL followed up later, which means that modern GPGPU pipelines can leverage the speed of a GPU without requiring full and explicit conversion of the data to a graphical form.
+- GTI: Graphics Technology Interface. 
+- TCB control: tension, continuity and bias control. A technique to tweak the shape of the curve.
 - TIN: Triangular Irregular Network
 - TLB: Translation Lookaside Buffer
 - Mip: Multim in Parvo (Latin)(i.e. much in a small space)

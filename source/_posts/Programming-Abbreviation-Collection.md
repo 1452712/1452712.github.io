@@ -86,10 +86,11 @@ A collection of programming abbreviations.
 - GI: Global Illumination
 - GPGPU: General Purpose computing on GPUs.
   Performs non-specialized calculations which are typically be conducted by the CPU. Started from NVIDIA GeForce 3, CUDA allowed programmers to ignore the underlying graphical concepts in favor of more common high-performance computing concepts. Microsoft's DirectCompute and Apple/Khronos Group's OpenCL followed up later, which means that modern GPGPU pipelines can leverage the speed of a GPU without requiring full and explicit conversion of the data to a graphical form.
-- TIN: Triangular Irregular Network
-- TLB: Translation Lookaside Buffer
 - Mip: Multim in Parvo (Latin)(i.e. much in a small space)
 - PBR: Physically Based Rendering (A rendering modes opposite to Classic mode)
+- TBR/TBDR: Tiled Based Deferrd Architecture, The tech used to balance GPU power & performance on mobiles.
+- TIN: Triangular Irregular Network
+- TLB: Translation Lookaside Buffer
 - UV Mapping: Suface Parameterization/Texture Coordinate Fundation
 - VFX: Visual Effects, including:
   - Special effects

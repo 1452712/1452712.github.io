@@ -266,3 +266,18 @@ private:
 ```
 
 **NOTICE:** Have no relationship with `std::signal`! 
+
+## Memory Leak
+
+1. VS Diagnostic Tool
+   > [Analyze CPU and Memory while Debugging](https://devblogs.microsoft.com/visualstudio/analyze-cpu-memory-while-debugging/)
+   > [Measure app performance in Visual Studio](https://docs.microsoft.com/en-us/visualstudio/profiling/index?view=vs-2019)
+2. CRT Library
+   > [Find memory leaks with the CRT library](https://docs.microsoft.com/en-us/visualstudio/debugger/finding-memory-leaks-using-the-crt-library?view=vs-2019)
+
+Possible reasons:
+
+- Multithread
+- Mem Pool
+- Temp resource
+- Destructor

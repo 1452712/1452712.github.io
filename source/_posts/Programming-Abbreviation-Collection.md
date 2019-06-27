@@ -16,6 +16,7 @@ A collection of programming abbreviations.
 
 | Abbreviation | Full Name | Related Link|
 | :------: | :------ | :------ |
+| ACES | Academic Color Encoding System | |
 | AGP | Accelerated Graphics Port | |
 | AWS | Amazon Web Service | |
 | BSP | Binary Space Partition| [wiki](https://en.wikipedia.org/wiki/Binary_space_partitioning) |
@@ -35,7 +36,7 @@ A collection of programming abbreviations.
 | GDI | Windows Graphics Device Interface | |
 | GUID | Global Unique Identifier; (**5 Types:** date-time & MAC address; DCE Security; MD5 hash & namespace; random; SHA-1 hash & namespace) | [quick guide](https://betterexplained.com/articles/the-quick-guide-to-guids/);  [msdn](https://msdn.microsoft.com/en-us/library/system.guid%28v=vs.110%29.aspx); [guid](http://guid.one/)|
 | HDMI | High-Definition Multimedia Interface | |
-| HDR | High Dynamic Range | |
+| HDR | High Dynamic Range | HDR vs SDR |
 | IOMMU | Input-Output Memory Management Unit | Refer to Picture 1 |
 | IaaS | Infrastructure as a Service | e.g. [AWS](https://aws.amazon.com) |
 | KPI | Key Performance Indicator | |

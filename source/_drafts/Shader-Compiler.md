@@ -1,9 +1,9 @@
 ---
-title: Shader & Compiler
+title: Shader Compiler
 categories:
 - Graphics
 tags:
-- Shader
+- VFX
 - Real-time Rendering
 updated:
 ---

@@ -3,8 +3,7 @@ title: Shader Compiler
 categories:
 - Graphics
 tags:
-- VFX
-- Real-time Rendering
+- Rendering
 updated:
 ---
 

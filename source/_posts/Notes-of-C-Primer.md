@@ -5,7 +5,6 @@ categories:
 - Language
 tags:
 - C++
-- Notes
 updated:
 ---
 Here are some notes and issues I found when I review _C++ Primer, 5e_.

@@ -3,7 +3,7 @@ title: 2019 GDC Collection
 categories:
 - Graphics
 tags:
-- Notes
+- Rendering
 updated:
 mathjax: true
 ---

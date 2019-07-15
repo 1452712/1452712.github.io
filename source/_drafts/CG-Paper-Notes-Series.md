@@ -3,7 +3,6 @@ title: CG Paper Notes Series
 categories:
 - Graphics
 tags:
-- Notes
 updated:
 mathjax: true
 ---

@@ -3,6 +3,7 @@ title: Hydra & USD Practice
 categories:
 - Graphics
 tags:
-- Real-time Rendering
+- Rendering
 updated:
 ---
+<!-- more -->

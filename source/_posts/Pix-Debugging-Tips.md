@@ -4,7 +4,8 @@ date: 2018-12-01 11:59:00
 categories:
 - Graphics
 tags:
-- Notes
+- Rendering
+- DirectX
 updated:
 ---
 

@@ -5,7 +5,6 @@ categories:
 - Language
 tags:
 - C++
-- Notes
 updated:
 ---
 Some notes and issues I took from work.

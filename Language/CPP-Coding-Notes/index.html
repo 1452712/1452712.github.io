@@ -109,14 +109,14 @@
 
 
   <meta name="description" content="Some notes and issues I took from work.">
-<meta name="keywords" content="Notes,C++">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ Coding Notes">
 <meta property="og:url" content="http://yoursite.com/Language/CPP-Coding-Notes/index.html">
 <meta property="og:site_name" content="Lumina Wang">
 <meta property="og:description" content="Some notes and issues I took from work.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-08T16:24:31.795Z">
+<meta property="og:updated_time" content="2019-07-15T12:59:00.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Coding Notes">
 <meta name="twitter:description" content="Some notes and issues I took from work.">
@@ -356,7 +356,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 03-09-2019 00:24:31" itemprop="dateModified" datetime="2019-03-09T00:24:31+08:00">03-09-2019</time>
+                <time title="Modified: 07-15-2019 20:59:00" itemprop="dateModified" datetime="2019-07-15T20:59:00+08:00">07-15-2019</time>
               
             
           </span>
@@ -552,6 +552,23 @@
 <p>A pattern pre-defined in <a href="https://doc.qt.io/archives/qt-4.8/signalsandslots.html" target="_blank" rel="noopener">Qt</a> which makes it easier to implement the Observer pattern. The class based on <code>QObject</code> can tell the outside world that its state has changed by emitting a signal, <code>valueChanged()</code>, and it has a slot which other objects can send signals to.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> :</span> <span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Counter() &#123; m_value = <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">value</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> m_value; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> value)</span></span>;</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">valueChanged</span><span class="params">(<span class="keyword">int</span> newValue)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> m_value;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>NOTICE:</strong> Have no relationship with <code>std::signal</code>! </p>
+<h2 id="Memory-Leak"><a href="#Memory-Leak" class="headerlink" title="Memory Leak"></a>Memory Leak</h2><ol>
+<li>VS Diagnostic Tool<blockquote>
+<p><a href="https://devblogs.microsoft.com/visualstudio/analyze-cpu-memory-while-debugging/" target="_blank" rel="noopener">Analyze CPU and Memory while Debugging</a><br><a href="https://docs.microsoft.com/en-us/visualstudio/profiling/index?view=vs-2019" target="_blank" rel="noopener">Measure app performance in Visual Studio</a></p>
+</blockquote>
+</li>
+<li>CRT Library<blockquote>
+<p><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/finding-memory-leaks-using-the-crt-library?view=vs-2019" target="_blank" rel="noopener">Find memory leaks with the CRT library</a></p>
+</blockquote>
+</li>
+</ol>
+<p>Possible reasons:</p>
+<ul>
+<li>Multithread</li>
+<li>Mem Pool</li>
+<li>Temp resource</li>
+<li>Destructor</li>
+</ul>
 
       
     </div>
@@ -571,8 +588,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/Notes/" rel="tag"># Notes</a>
           
             <a href="/tags/C/" rel="tag"># C++</a>
           
@@ -715,7 +730,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -770,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Define-Functions-with-Macro"><span class="nav-number">1.</span> <span class="nav-text">Define Functions with Macro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operator-Overloading"><span class="nav-number">2.</span> <span class="nav-text">Operator Overloading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notice-the-differences-among-size-t-UINT-UINT64-etc"><span class="nav-number">3.</span> <span class="nav-text">Notice the differences among size_t, UINT, UINT64, etc.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-C-17-Features"><span class="nav-number">4.</span> <span class="nav-text">TODO: C++17 Features</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fold-Expressions"><span class="nav-number">4.1.</span> <span class="nav-text">Fold Expressions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-Macro-Function"><span class="nav-number">5.</span> <span class="nav-text">TODO: Macro Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tbb-Multithread-lock"><span class="nav-number">6.</span> <span class="nav-text">tbb Multithread lock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4V-force-sync-removed-files"><span class="nav-number">7.</span> <span class="nav-text">P4V force sync removed files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Tips"><span class="nav-number">8.</span> <span class="nav-text">Other Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mark-some-useful-tools"><span class="nav-number">9.</span> <span class="nav-text">Mark some useful tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-inl-files"><span class="nav-number">10.</span> <span class="nav-text">Using .inl files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signals-and-Slots"><span class="nav-number">11.</span> <span class="nav-text">Signals and Slots</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Define-Functions-with-Macro"><span class="nav-number">1.</span> <span class="nav-text">Define Functions with Macro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operator-Overloading"><span class="nav-number">2.</span> <span class="nav-text">Operator Overloading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notice-the-differences-among-size-t-UINT-UINT64-etc"><span class="nav-number">3.</span> <span class="nav-text">Notice the differences among size_t, UINT, UINT64, etc.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-C-17-Features"><span class="nav-number">4.</span> <span class="nav-text">TODO: C++17 Features</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fold-Expressions"><span class="nav-number">4.1.</span> <span class="nav-text">Fold Expressions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-Macro-Function"><span class="nav-number">5.</span> <span class="nav-text">TODO: Macro Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tbb-Multithread-lock"><span class="nav-number">6.</span> <span class="nav-text">tbb Multithread lock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4V-force-sync-removed-files"><span class="nav-number">7.</span> <span class="nav-text">P4V force sync removed files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Tips"><span class="nav-number">8.</span> <span class="nav-text">Other Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mark-some-useful-tools"><span class="nav-number">9.</span> <span class="nav-text">Mark some useful tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-inl-files"><span class="nav-number">10.</span> <span class="nav-text">Using .inl files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signals-and-Slots"><span class="nav-number">11.</span> <span class="nav-text">Signals and Slots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-Leak"><span class="nav-number">12.</span> <span class="nav-text">Memory Leak</span></a></li></ol></div>
             
 
           </div>

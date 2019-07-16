@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="Some notes and issues I took from work.">
+  <meta name="description" content="Notes and issues taken down in practice.">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ Coding Notes">
 <meta property="og:url" content="http://yoursite.com/Language/CPP-Coding-Notes/index.html">
 <meta property="og:site_name" content="Lumina Wang">
-<meta property="og:description" content="Some notes and issues I took from work.">
+<meta property="og:description" content="Notes and issues taken down in practice.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-15T12:59:00.370Z">
+<meta property="og:updated_time" content="2019-07-16T12:12:22.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ Coding Notes">
-<meta name="twitter:description" content="Some notes and issues I took from work.">
+<meta name="twitter:description" content="Notes and issues taken down in practice.">
 
 
 
@@ -356,7 +356,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 07-15-2019 20:59:00" itemprop="dateModified" datetime="2019-07-15T20:59:00+08:00">07-15-2019</time>
+                <time title="Modified: 07-16-2019 20:12:22" itemprop="dateModified" datetime="2019-07-16T20:12:22+08:00">07-16-2019</time>
               
             
           </span>
@@ -407,7 +407,7 @@
       
 
       
-        <p>Some notes and issues I took from work.<br><a id="more"></a></p>
+        <p>Notes and issues taken down in practice.<br><a id="more"></a></p>
 <h2 id="Define-Functions-with-Macro"><a href="#Define-Functions-with-Macro" class="headerlink" title="Define Functions with Macro"></a>Define Functions with Macro</h2><ul>
 <li>Macro Definition Example</li>
 </ul>
@@ -515,7 +515,6 @@
 <p>Default values of empty parameter packs: <code>&amp;&amp;</code>: <code>true</code>; <code>||</code>: <code>false</code>; <code>,</code>: <code>void()</code>.</p>
 <p>e.g.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ...Args&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FoldPrint</span><span class="params">(Args&amp;&amp;... args)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ... &lt;&lt; forward&lt;Args&gt;args &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    FoldPrint(<span class="string">"Hello"</span> , <span class="string">", "</span>, <span class="string">"C++"</span>, <span class="number">17</span>, <span class="string">"!"</span>);</span><br><span class="line">    FoldPrint();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="TODO-Macro-Function"><a href="#TODO-Macro-Function" class="headerlink" title="TODO: Macro Function"></a><em>TODO:</em> Macro Function</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEFINE_NETOBJECTCOUNT(class)\</span></span><br><span class="line">    OGS::Objects::Atomic&lt;<span class="keyword">int</span>&gt; class::mNetObjectCount = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="tbb-Multithread-lock"><a href="#tbb-Multithread-lock" class="headerlink" title="tbb Multithread lock"></a>tbb Multithread lock</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(multiThreading)</span><br><span class="line">&#123;</span><br><span class="line">    tbb::spin_mutex::<span class="function">scoped_lock <span class="title">lck</span><span class="params">(mutex)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>The lock will be released when it goes out of the bracket.</p>
 <h2 id="P4V-force-sync-removed-files"><a href="#P4V-force-sync-removed-files" class="headerlink" title="P4V force sync removed files"></a>P4V force sync removed files</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p4 diff -sd &lt;<span class="built_in">path</span>-to-resource&gt;...|p4 -x- sync -f</span><br></pre></td></tr></table></figure>
@@ -569,6 +568,7 @@
 <li>Temp resource</li>
 <li>Destructor</li>
 </ul>
+<h2 id="Include-Guards"><a href="#Include-Guards" class="headerlink" title="Include Guards"></a>Include Guards</h2><p><strong>Preferred</strong>: use <code>#pragma once</code> in header files instead of <code>#ifndef ...</code>.<br>Advantages: <a href="https://en.wikipedia.org/wiki/Pragma_once" target="_blank" rel="noopener">wiki</a>. For more about pre-processor, refer to this <a href="https://en.wikipedia.org/wiki/C_preprocessor" target="_blank" rel="noopener">link</a>.</p>
 
       
     </div>
@@ -688,7 +688,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -787,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Define-Functions-with-Macro"><span class="nav-number">1.</span> <span class="nav-text">Define Functions with Macro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operator-Overloading"><span class="nav-number">2.</span> <span class="nav-text">Operator Overloading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notice-the-differences-among-size-t-UINT-UINT64-etc"><span class="nav-number">3.</span> <span class="nav-text">Notice the differences among size_t, UINT, UINT64, etc.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-C-17-Features"><span class="nav-number">4.</span> <span class="nav-text">TODO: C++17 Features</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fold-Expressions"><span class="nav-number">4.1.</span> <span class="nav-text">Fold Expressions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-Macro-Function"><span class="nav-number">5.</span> <span class="nav-text">TODO: Macro Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tbb-Multithread-lock"><span class="nav-number">6.</span> <span class="nav-text">tbb Multithread lock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4V-force-sync-removed-files"><span class="nav-number">7.</span> <span class="nav-text">P4V force sync removed files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Tips"><span class="nav-number">8.</span> <span class="nav-text">Other Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mark-some-useful-tools"><span class="nav-number">9.</span> <span class="nav-text">Mark some useful tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-inl-files"><span class="nav-number">10.</span> <span class="nav-text">Using .inl files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signals-and-Slots"><span class="nav-number">11.</span> <span class="nav-text">Signals and Slots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-Leak"><span class="nav-number">12.</span> <span class="nav-text">Memory Leak</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Define-Functions-with-Macro"><span class="nav-number">1.</span> <span class="nav-text">Define Functions with Macro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operator-Overloading"><span class="nav-number">2.</span> <span class="nav-text">Operator Overloading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Notice-the-differences-among-size-t-UINT-UINT64-etc"><span class="nav-number">3.</span> <span class="nav-text">Notice the differences among size_t, UINT, UINT64, etc.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO-C-17-Features"><span class="nav-number">4.</span> <span class="nav-text">TODO: C++17 Features</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fold-Expressions"><span class="nav-number">4.1.</span> <span class="nav-text">Fold Expressions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tbb-Multithread-lock"><span class="nav-number">5.</span> <span class="nav-text">tbb Multithread lock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P4V-force-sync-removed-files"><span class="nav-number">6.</span> <span class="nav-text">P4V force sync removed files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Tips"><span class="nav-number">7.</span> <span class="nav-text">Other Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mark-some-useful-tools"><span class="nav-number">8.</span> <span class="nav-text">Mark some useful tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-inl-files"><span class="nav-number">9.</span> <span class="nav-text">Using .inl files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Signals-and-Slots"><span class="nav-number">10.</span> <span class="nav-text">Signals and Slots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-Leak"><span class="nav-number">11.</span> <span class="nav-text">Memory Leak</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Include-Guards"><span class="nav-number">12.</span> <span class="nav-text">Include Guards</span></a></li></ol></div>
             
 
           </div>

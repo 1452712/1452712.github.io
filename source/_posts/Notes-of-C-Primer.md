@@ -7,5 +7,5 @@ tags:
 - C++
 updated:
 ---
-Here are some notes and issues I found when I review _C++ Primer, 5e_.
+Some issues and demos taken from _C++ Primer, 5e_.
 <!-- more -->

@@ -7,7 +7,7 @@ tags:
 - C++
 updated:
 ---
-Some notes and issues I took from work.
+Notes and issues taken down in practice.
 <!-- more -->
 
 ## Define Functions with Macro

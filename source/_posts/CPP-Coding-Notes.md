@@ -176,13 +176,6 @@ int main(){
 }
 ```
 
-## _TODO:_ Macro Function
-
-```cpp
-#define DEFINE_NETOBJECTCOUNT(class)\
-    OGS::Objects::Atomic<int> class::mNetObjectCount = 0;
-```
-
 ## tbb Multithread lock
 
 ```cpp
@@ -280,3 +273,9 @@ Possible reasons:
 - Mem Pool
 - Temp resource
 - Destructor
+
+## Include Guards
+
+**Preferred**: use `#pragma once` in header files instead of `#ifndef ...`.
+Advantages: [wiki](https://en.wikipedia.org/wiki/Pragma_once). For more about pre-processor, refer to this [link](https://en.wikipedia.org/wiki/C_preprocessor).
+

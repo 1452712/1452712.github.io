@@ -106,9 +106,9 @@ Current obstacle: power! => Scalable Parallel Computing.
   - Sequential Consistency: memory operations in program order. => Bus-based Cache-Coherent(CC) Architecture with Cache-Coherency Protocol (e.g. Snoopy).
     - Basic Snoopy: Write Invalidate, Write Broadcast, Write Serialization, Write Invalidate vs Broadcast.
     - Snooping Cache Variations
-  
-      |  |  |
-      |:--------------- | :---------------------:|
+
+      | Protocol | Properties |
+      | :----- | :-----: |
       | Basic Protocol | Exclusive, Shared, Invalid |
       | Berkeley Protocol | Owned Exclusive, Owned Shared, Shared, Invalid |
       | Illinois Protocol | Private Dirty, Private Clean, Shared, Invalid |

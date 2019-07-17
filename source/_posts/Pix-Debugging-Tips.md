@@ -10,6 +10,7 @@ updated:
 ---
 
 Debugging Tips of Pix (GPU Frame Capture Tools).
+Not long ago, the PIX documentation was quite muddled and almost absent, for which I logged some basic usages. Definitely it is an essential tool to debug DX12 with powerful and complete functions. And till now, it maintains frequent upgrades. So for the latest functions or more detailed usages, please refer to release notes on [devblog](https://devblogs.microsoft.com/pix/). Or maybe one day, we could trust in its [documentation](https://devblogs.microsoft.com/pix/documentation/).
 <!-- more -->
 
 ## Basic Usage

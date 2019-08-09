@@ -60,6 +60,8 @@ A collection of programming abbreviations.
 | XFB | Binary Device Interface File Format Header | [AXway File Broker](https://docs.axway.com/bundle/SecureTransport_536_AdministratorGuide_allOS_en_HTML5/page/Content/AdministratorsGuide/setup/c_st_aboutXFB_TO.htm) |
 * * *
 
+> [wiki: Glossary of computer graphics](https://en.wikipedia.org/wiki/Glossary_of_computer_graphics)
+
 ## Useful Tools
 
 - QT: https://resources.qt.io/resources-by-content-type-videos-demos-tutorials

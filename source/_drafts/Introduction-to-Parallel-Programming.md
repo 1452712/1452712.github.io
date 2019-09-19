@@ -150,3 +150,50 @@ _Task-based Parallelism._
   - Atomic Operations: Avoid mutual exclusion but limited operations.
 
 ## _TODO:_ Demo
+
+
+
+
+
+
+// Following is the course notes from [UCB-CS267: Applications of Parallel Computers](https://sites.google.com/lbl.gov/cs267-spr2019/)
+
+
+//TODO: Create a new post page & Move the contents with notes below to the new.
+
+## Lec1: Intro
+
+### Notes
+Application: High Performance Simulation/Data Analytics
+**Strong Scaling**: Speedup(P) = Time(1)/Time(P). Fixed problem size, vary number of processors.
+**Weak Scaling**: Efficiency-Processors(cores). Fixed problem size per processor. Efficiency can be Flop/s, time, etc.
+**Amdahl's Law**: Speedup(P) <= 1/s (P: processor number; s: sequential work fraction)
+Parallelism overheads: Creation, Communication, Synchronization, Extra (redundant) Computation => A tradeoff of work unit size.
+Single Processor Memory Hierarchy: the larger, the slower => Temporal Locality.
+
+### Course contents
+Parallelization Machines:
+- Shared memory (OpenMP, PGAS)
+- Distributed memory (MPI)
+- Data parallel (SPARK, CUDA)
+
+Parallelization Strategies:
+- Dense Linear Algebra
+- Monte Carlo 
+- Sparse Linear Algebra
+- Spectral Methods
+- Particle Methods
+- Structured Grids
+- Unstructured Grids
+- _Sorting_
+- _Graphs_
+- _Hashing_
+
+Performance models: Roofline, α-β (latency/bandwidth), LogP
+
+Cross-cutting: Communication avoiding, load balancing, hierarchical algorithms, autotuning, Moore’s Law, Amdahl’s Law, Little’s Law.
+
+
+
+
+

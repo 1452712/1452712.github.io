@@ -161,9 +161,9 @@ _Task-based Parallelism._
 
 //TODO: Create a new post page & Move the contents with notes below to the new.
 
-## Lec1: Intro
+## Lec1: Introduction
 
-### Notes
+### Terms
 Application: High Performance Simulation/Data Analytics
 **Strong Scaling**: Speedup(P) = Time(1)/Time(P). Fixed problem size, vary number of processors.
 **Weak Scaling**: Efficiency-Processors(cores). Fixed problem size per processor. Efficiency can be Flop/s, time, etc.
@@ -194,6 +194,102 @@ Performance models: Roofline, α-β (latency/bandwidth), LogP
 Cross-cutting: Communication avoiding, load balancing, hierarchical algorithms, autotuning, Moore’s Law, Amdahl’s Law, Little’s Law.
 
 
+## Lec2: Single Processor Machines (HW)
 
+### Costs in modern processors
+
+Ideally: variables, operations, controls => balanced cost
+Actually: compilers manage memory & registers => optimize code.
+
+>Optimization: Unrolls/Fuses/Interchanges loops, Eliminates dead code, Reorder instructions (reuse registers), Strength reduction (e.g. *2 => <<), etc.
+
+### Memory hierarchies
+
+Latency/Bandwidth limit performance:
+Latency = distance/speed limit = hours;
+Bandwidth = cars/mile * miles/hour * #lanes = cars/hour (independent of dis).
+
+Most programs have a high degree of locality:
+spatial locality (nearby) v.s. temporal locality (reusing).
+
+Memory hierarchy improves avg, with worse latency:
+    Register, On-chip cache, Pages (TLB, VM), ...
+Solutions:
+    Temporal locality, Spatial locality;
+    Parallelism: Vector operations require independent locations, Prefetching, Delayed writing (write buffer), ...
+Little's Law (Ideal concurrent issues): concurrency = latency * bandwidth.
+
+### Parallelism within single processors
+
+Instruction Level Parallelism (ILP):
+BW = loads / time.
+(Not change latency; slowest stage bottleneck; Speedup <= #stages)
+
+SIMD units:
+Processing by vectors (SSE2 data types: 16 bytes);
+Data dependencies limit parallelism (RAW, WAR, WAW).
+
+Special Instructions:
+FMA (Fused Multiply-Add): `x = round(c * z + y)`. (same rate as +/*; matrix).
+
+### Case study: matrix multiplication
+
+Naive Matrix Multiply:
+
+```
+//implements C = C + A * B
+for i = 1 to n 
+    //read row i of A into fast mem
+    for j = 1 to n
+        //read C(i, j) into fast mem
+        //read column j of B into fast mem
+        for k = 1 to n
+            C(i, j) = C(i, j) + A(i, k) * B(k, j);
+        //write C(i, j) back to slow mem
+```
+
+Blocked (Tiled) Matrix Multiply (tiling for registers/caches):
+(Similarly: Recursive Matrix Multiplication)
+
+```
+//A, B, C: n-n matrices => N-N matrices of b-b subblocks
+//block size: b = n / N
+//3 nested loops inside
+for i = 1 to N 
+    for j = 1 to N
+        //read block C(i, j) into fast mem
+        for k = 1 to N
+            //read blocks A(i, k), B(k, j) into fast mem
+            //multiply on blocks
+            //block size = loop bounds
+            C(i, j) = C(i, j) + A(i, k) * B(k, j);
+        //write block C(i, j) back to slow mem
+```
+
+To accelerate computing, make **b as large as possible (~square root of cache size)**.
+For multi-level mem: minimize communication; appropriate block size; cache oblivious algorithms.
+
+Theorem (Hong & Kung, 1981): Communication lower bounds for matmul
+Any reorganization of matmul (using only associativity) has computational intensity $$q = O( (M_fast)^1/2 )$$, so:
+   $$ #words moved between fast/slow memory = Ω (n^3 / (M_fast)^1/2 )$$
+
+Refer to [BLAS (Basic Linear Algebra Subroutines)](www.netlib.org/blas) for more fast matmul algo.
+
+### Optimization
+
+- Tilling for registers: loop unrolling, use of named "register" variables;
+- Tilling for multiple levels of cache and TLB;
+- Exploiting fine-grained parallelism in processor: rm dependencies, SIMD;
+- Complicated compiler interactions (flags);
+- Minimize pointer updates (using strided memory addressing).
+
+> Automatic performance tuning (Berkeley centric): 
+[ASPIRE](aspire.eecs.berkeley.edu)
+[BeBOP](bebop.cs.berkeley.edu) 
+[PHiPAC](www.icsi.berkeley.edu/~bilmes/phipac)
+          in particular tr-98-035.ps.gz
+[ATLAS](www.netlib.org/atlas)
+[LAPACK (Linear Algebra PACKage)](http://www.netlib.org/lapack/): a standard linear algebra library optimized to use the BLAS effectively on uniprocessors and shared memory machines (software, documentation and reports)
+[ScaLAPACK (Scalable LAPACK)](http://www.netlib.org/scalapack/): A parallel version of LAPACK for distributed memory machines (software, documentation and reports).
 
 

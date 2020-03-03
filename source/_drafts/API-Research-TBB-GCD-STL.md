@@ -18,17 +18,20 @@ Based on the current OGS usages, the following chart shows differences of requir
 |:---:| ---:| ---:| ---:|
 | TBB | | | |
 | STL | | | |
-| GCD | | | |
+| GCD | macOS | | |
 
-Here are some suggestions:
+Here are my personal suggestions:
 - For current OGS:
   - Replace duplicated or deprecated tbb modules/APIs with STL;
   - Keep TBB's concurrency container;
-  - Simplify TBB parallel algorithms with STL;
+  - Balance tbb operator work;
+  - Seperate data processing with pure cache data-structure operations;
   - // TODO: Demo to check Cache Miss Performance Impact.
 
 - For GSF:
-  - //TODO
+  - For cross-platform compatibility, avoid using either GCD or TBB and limit within STL or boost; As for platform-specific optimization, we could consider WinRT or GCD.
+  - Simplify current TBB parallel algorithm usages with STL.
+  - Redesign OGS containers so that users can clearly choose the thread-safe or the non-thread-safe version.
 
 Key ideas for multithreading:
 //
@@ -60,6 +63,7 @@ And we should notice the potentiality in their new products and techniques. Take
 
 > With Intel Turbo Boost Technology, the Intel chip can hit the 5.0GHz ceiling using two cores. The boost number drops to 4.8GHz using four cores and 4.7GHz using eight cores. Meanwhile, AMD’s Precision Boost 2 technology increases the speed of any number of cores . The increase is based on an analysis of the current environment involving thermal, electrical, and headroom utilization. It’s what AMD calls the “reliability triangle.”<br>
 > That said, the AMD chip has a base speed advantage while the Intel chip has a higher turbo speed ceiling.
+
 ### Duplicated Modules in STL
 
 Here are some duplicated functionalities in TBB that OGS often uses.
@@ -72,6 +76,18 @@ Here are some duplicated functionalities in TBB that OGS often uses.
 | tbb::recursive_mutex | std::recursive_mutex |
 | tbb::reader_writer_lock | std::shared_mutex |
 | tbb::hash & tbb:hasher | std::hash |
+
+### Thread-Safe Container
+
+### Parallel Algorithms
+
+A Sample Usage:
+//...
+
+Key Implementation: (Way to distribute tasks)
+//...
+
+So a serious problem is that we have dependencies between Nodes because of data structures (BSP-Tree) & usages (Callbacks, SwapAgent, MissingChanel, etc.)
 
 ### // ...
 
@@ -103,6 +119,9 @@ Even though we can gain more features if we upgrade to C++14, which is also capa
 
 ### Parallel Algorithms
 // Thread Library: future, async, ...
+Problem: Thread-local Cache
+Optional Solution:
+1. Refactor Cache Mechanism: Keep Useful Data into Cache and release all the thread-local cache when ending tasks.
 // std::sort (ParallelSTL)
 
 ### // ...
@@ -114,9 +133,24 @@ Even though we can gain more features if we upgrade to C++14, which is also capa
 
 ## GCD
 // Intro...
+> Grand Central Dispatch (GCD or libdispatch) provides comprehensive support for concurrent code execution on multicore hardware. 
 
 ### Platform Support
-// Performance & Stability on Windows!!!
+
+Originally, the GCD only supports Darwin officially. Around 2011, as these [mails](https://lists.macosforge.org/pipermail/libdispatch-dev/2011-April/000513.html) and [blogs](https://blog.quiscalusmexicanus.org/2011/04/25/grand-central-dispatch-for-win32-things-still-to-do/) showed, DrPizza tried to port it into Windows but failed. Legacy code is still available on [github](https://github.com/DrPizza/libdispatch).
+
+Following are detailed information:
+
+> libdispatch is currently available on all **Darwin** platforms.
+
+Site from wikipedia:
+> Darwin is an open-source Unix-like operating system first released by Apple Inc.
+
+![UnixTimeline](/contents/images/API-Research-TBB-GCD-STL/Unix_timeline.en.svg)
+
+We might be capable to use it by [Objective-C++](https://medium.com/@husain.amri/objective-c-deliver-us-from-swift-3a44d3ac00e7). Definitely, however, it will probably impact the performance a lot, let alone the heavy maintenance workload in the future.
+
+A new version of GCD called [swift-corelibs-libdispatch](https://apple.github.io/swift-corelibs-libdispatch/) aims to make a modern version of libdispatch available on all other **Swift** platforms. Nevertheless, there are no official supporting neither for Windows nor the Unix. Non-official projects like [XDispatch](http://opensource.mlba-team.de/xdispatch/docs/current/index.html) or even personal projects like [swift-build](https://github.com/compnerd/swift-build) could involve potential risks. An implementation for [FreeBSD](https://wiki.freebsd.org/action/show/GrandCentralDispatch?action=show&redirect=GCD) didn't update since 2009.
 
 ### Thread-Safe Container
 

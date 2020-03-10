@@ -9,32 +9,16 @@ updated:
 ---
 
 <!-- more -->
-// TODO: Format & img checks.
 
 ## Overview
 
-Based on the current OGS usages, the following chart shows differences of required features between TBB, GCD & STL(C++11):
+The following chart shows differences of required features between TBB, GCD & STL(C++11):
 
 | Lib | Platform Support | Thread-Safe Container | Parallel Algorithms |
 |:---:| ---:| ---:| ---:|
 | TBB | Windows, Linux, macOS | YES | `tbb::parallel_do` |
 | STL | Windows, Linux, macOS| NO (alternative: boost) | `stl::async` |
 | GCD | macOS | NO | `dispatch_async` |
-
-Here are my personal suggestions:
-
-For current OGS:
-  - Replace duplicated or deprecated tbb modules/APIs with STL;
-  - Keep TBB's concurrency container;
-  - Try `tbb::task_arena`;
-  - Balance tbb operator work;
-  - Separate data processing with pure cache data-structure operations.
-
-For GSF:
-  - For cross-platform compatibility, avoid using either GCD or TBB and limit within STL or boost;
-  - For platform-specific optimization, we could consider WinRT or GCD;
-  - Redesign parallel traversing with STL;
-  - Redesign OGS containers so that users can clearly choose the thread-safe or the non-thread-safe version.
 
 ### Parallel Computing Applications in Graphics / Games
 
@@ -46,16 +30,6 @@ For GSF:
 | Graph Traversal  (e.g., Quicksort) | Visits many nodes in a graph by following successive edges. These applications typically involve many levels of indirection, and a relatively small amount of computation. | Reverse kinematics, collision detection, depth sorting, hidden surface removal |
 | Finite State Machine | A system whose behavior is defined by states, transitions defined by inputs and the current state, and events associated with transitions or states. | Response to collisions |
 
-### Current OGS Usage
-
-![Pipeline](/contents/images/API-Research-TBB-GCD-STL/Pipeline.png)
-<font size="2"> Site from <a href="https://wiki.autodesk.com/pages/viewpage.action?spaceKey=ogs&title=Inventor+Improvement+Ideas">Inventor Improvement Ideas</a> </font>
-
-1. Coupled Data Structure & Algorithms, typically BSP tree & consolidation;
-   ![TreeGraph](/contents/images/API-Research-TBB-GCD-STL/mammoth_consolidationTreeGraph.svg)
-2. Numerous Global Cache introducing data race;
-3. Uncontrollable IteratorStream (e.g. Swapchain) resulting in starting up more than once tbb::parallel_while in a single traversal.
-
 ********
 
 ## STL
@@ -66,7 +40,7 @@ Main related Libs: **Thread support library**, **Atomic operations library**, **
 
 ### Compiler Support
 
-Currently, OGS are using C++11, which are almost fully supported by all the main compilers including GCC, Clang, MSVC, Apple Clang, EDG eccp, Intel C++, etc. 
+C++11 are almost fully supported by all the main compilers including GCC, Clang, MSVC, Apple Clang, EDG eccp, Intel C++, etc. 
 
 Even though we can gain more features if we upgrade to C++14, which is also capable deployed on our build machines, the motivation won't come until we gains more then pains. As for C++17 or even C++2a, there are still some remained tasks for compilers to do. For example, here are some left C++17 library features:
 
@@ -212,11 +186,8 @@ Pros:
 4. Exception mechanism.
 
 Cons:
-Too detailed & specific.
-
-Problem: Thread-local Cache
-Optional Solution:
-1. Refactor Cache Mechanism: Keep Useful Data into Cache and release all the thread-local cache when ending tasks.
+1. Too detailed & specific;
+2. No support for thread-local cache.
 
 ********
 
@@ -252,7 +223,7 @@ And we should notice the potentiality in their new products and techniques. Take
 
 ### Duplicated Modules in STL
 
-Here are some duplicated functionalities in TBB that OGS often uses.
+Here are some duplicated functionalities often used in TBB.
 
 | TBB | STL |
 | :--- | :--- |
@@ -275,7 +246,7 @@ TBB currently offers the following concurrent containers:
 
 Comparison of concurrent unordered associative containers:
 
-| Class Name | Concurrent traversal and insertion | Keys have a value associated with them | Support concurrent erasure | No visible locking (lock-free interface) | Identical items allowed to be inserted | [] and `at` accessors |
+| Class Name | Concurrent traversal and insertion | Keys have a value associated with them | Support concurrent erasure | Built-in locking | No visible locking (lock-free interface) | Identical items allowed to be inserted | [] and `at` accessors |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | tbb::concurrent_hash_map | YES | YES | YES | YES | NO | NO | NO |
 | tbb::concurrent_unordered_map | YES | YES | NO | NO | YES | NO | YES |
@@ -504,7 +475,7 @@ Following shows the flow graph node types supported:
 
 It is particularly appropriate for algorithms in which a problem can be recursively divided into smaller subproblems following a tree-like decomposition. Take Fibonacci sequence as an example:
 
-1. High-Level Approach: `parallel_invoke`
+#### High-Level Approach: `parallel_invoke`
 
 ```cpp
 long parallel_fib1(long n){
@@ -520,7 +491,7 @@ long parallel_fib1(long n){
 }
 ```
 
-2. Lower Approach: `task_group`
+#### Lower Approach: `task_group`
 
 ```cpp
 long parallel_fib2(long n){
@@ -543,7 +514,7 @@ long parallel_fib2(long n){
 }
 ```
 
-3. Low-Level Approach: `task` (Task Blocking, Task Continuation & Task Recycling)
+#### Low-Level Approach: `task` (Task Blocking, Task Continuation & Task Recycling)
 
 Recycle FibTask (FibTask(8, &sum) in the figure) as a child of FibCont:
 
@@ -612,7 +583,6 @@ Is it somewhat similar to GCD???
 ### Summary
 
 Pros:
-  - Currently in-use, less efforts are required either for current OGS or GSF;
   - Schedule thread work in the whole products across components;
   - Detailed (but uncontrollable) memory management.
 
@@ -650,7 +620,7 @@ A new version of GCD called [swift-corelibs-libdispatch](https://apple.github.io
 
 ### High-Level Usages
 
-1. Parallelism with GCD
+#### Parallelism with GCD
 
 Sample Usage (parallel for-loop):
 ```swift
@@ -664,7 +634,7 @@ To balance CPU core's work, we need to choose an appropriate iteration count (i.
 A better choice might be 100:
 ![IterationCount100](/contents/images/API-Research-TBB-GCD-STL/Iteration-Count-100.png)
 
-2. Concurrency for Independently Executed Tasks
+#### Concurrency for Independently Executed Tasks
 
 ![ContextSwitch](/contents/images/API-Research-TBB-GCD-STL/Context-Switch.png)
 
@@ -719,7 +689,7 @@ This figure shows the architecture of queues and thread pool:
 
 ![GCDPool](/contents/images/API-Research-TBB-GCD-STL/gcd-pool.png)
 
-#### Basic Usage
+### Basic Usage
 
 - Submitting blocks to queues
     `dispatch_async(queue, ^{ /* Block */ });`
@@ -738,13 +708,7 @@ This figure shows the architecture of queues and thread pool:
     `dispatch_barrier_async(concurrent_queue, ^{ /* Barrier */ });`
     `dispatch_barrier_sync(concurrent_queue, ^{ /* Barrier */ });`
 
-// TODO
-| | DISPATCH_QUEUE_SERIAL | DISPATCH_QUEUE_CONCURRENT |
-| :--- | :--- | :--- |
-| `dispatch_sync` | Sequency Execution (no new thread; summit to current serial queue will cause deadlock) |  Sequency Popup, Synchronous Execution (no new thread) |
-| `dispatch_async` | Sequency Popup & Execution (new threads) | Sequency Popup, Asynchronous Execution (new threads) |
-
-1. Use Global Dispatch Queue to Accelerate Loading:
+#### Use Global Dispatch Queue to Accelerate Loading:
 
 ```objectivec
     //......
@@ -757,7 +721,7 @@ This figure shows the architecture of queues and thread pool:
     //......
 ```
 
-2. Atomic Operation in Singletons:
+#### Atomic Operation in Singletons:
 
 ```objectivec
 + (instancetype)sharedManager
@@ -778,7 +742,7 @@ The logical figure shows the dispatch flow of this usage:
 
 ![DispatchOnce](/contents/images/API-Research-TBB-GCD-STL/Dispatch-Once.png)
 
-3. Customized Queue for Readers-Writers Problem:
+#### Customized Queue for Readers-Writers Problem:
 
 ```objectivec
 // create concurrent queue
@@ -812,7 +776,7 @@ The logical figure shows the dispatch flow of this usage:
 
 ### Advanced Usage
 
-1. Semaphore
+#### Semaphore
 
 Sample Code:
 
@@ -842,7 +806,7 @@ Sample Code:
 }
 ```
 
-2. Dispatch Group (Recommend: Global Dispatch Queue)
+#### Dispatch Group (Recommend: Global Dispatch Queue)
 
 Use `dispatch_group_enter` and `dispatch_group_leave` to notify or callback a group of blocks. Sample Code:
 
@@ -889,7 +853,7 @@ Use `dispatch_group_enter` and `dispatch_group_leave` to notify or callback a gr
 }
 ```
 
-3. Dispatch Source
+#### Dispatch Source
 
 Usually apply for timer. Sample Code:
 
@@ -929,21 +893,23 @@ Usually apply for timer. Sample Code:
 
 Pros:
 - Simplified design;
-- Improve workload balance in lower level;
-- Targeted at our current parallelism bottleneck.
+- Improve workload balance in lower level.
 
 Cons:
 - Limited platform support;
-- Learning, implementation and maintenance efforts; 
 - Can be covered by tbb???
 
-Since this is an open-source project, another option is that we implement a cross-platform version of GCD ourselves, which also meets the "Open Source Platform" strategies.
+For platform support, one option is that abstracting and implementing a cross-platform version of GCD.
 
 ********
 
 ## Reference
 
+### Overview
+
 - Asanovic, K., Bodik, R., Catanzaro, B. C., Gebis, J. J., Husbands, P., Keutzer, K., ... & Yelick, K. A. (2006). _The landscape of parallel computing research: A view from berkeley._
+
+### STL
 
 - [C++ compiler support](https://en.cppreference.com/w/cpp/compiler_support)
 - [The Parallelism TS Should be Standardized](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html#algorithms.parallel.exec)
@@ -951,10 +917,14 @@ Since this is an open-source project, another option is that we implement a cros
 - Josuttis, N. M. (2012). _The C++ standard library: a tutorial and reference._ Addison-Wesley.
 - Holzner, Steven (2001). _C++ : Black Book._ Scottsdale, Ariz.: Coriolis Group.
 
+### TBB
+
 - [AMD vs Intel: Which is better for 2019 and beyond?](https://www.androidauthority.com/amd-vs-intel-994185/)
 - [intel/tbb/examples](https://github.com/intel/tbb/tree/tbb_2020/examples)
 - [TBB Getting Started Tutorial](https://www.threadingbuildingblocks.org/intel-tbb-tutorial)
 - Voss, M., Asenjo, R., & Reinders, J. (2019). _Pro TBB: C++ Parallel Programming with Threading Building Blocks._ Apress.
+
+### GCD
 
 - [Framework Dispatch (Objective-C)](https://developer.apple.com/documentation/dispatch?language=objc)
 - [Mastering Grand Central Dispatch](https://developer.apple.com/videos/play/wwdc2011/210/)

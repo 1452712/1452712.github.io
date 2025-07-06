@@ -23,7 +23,7 @@ Grab the yellow arrow (the execution pointer) on the left and move the yellow ar
 
 ## Pseudo-variables in Watch Window
 
-The Watch windows or the QuickWatch dialog support some special (debugger-recognized) variables called pseudo variables. The documented ones refer to [MS Docs]( https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables?view=vs-2017)
+The Watch windows or the QuickWatch dialog support some special (debugger-recognized) variables called pseudo variables. The documented ones refer to [MS Docs](https://docs.microsoft.com/en-us/visualstudio/debugger/pseudovariables?view=vs-2017)
 
 ![Pseudo-variables](/contents/images/VS2017-Debugging-Tips/image2-18.png)
 
@@ -202,7 +202,7 @@ To freeze and unfreeze threads:
 2. Show the **Suspended Count** column by selecting it in the **Columns** list.
 3. Deselect the rows by clicking one row only.
 4. Right-click a row and select Thaw. The pause icon goes away on this row, indicating that the thread is no longer frozen.
-5. Switch to the code editor and click F11. Only the unfrozen thread runs. The app may also instantiate some new threads. Notice that any new threads are unflagged and are not frozen.
+5. Switch to the code editor and click F11. Only the unfrozen thread runs.The app may also instantiate some new threads. Notice that any new threads are unflagged and are not frozen.
 
 ## Switch Between Processes
 
@@ -292,7 +292,7 @@ The debugger cannot break on both CPU code and GPU code in the same app executio
 - [Find DLL Crashed in](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-find-which-dll-your-program-crashed-in?view=vs-2017) And [Examine System Code After an Exception](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-examine-system-code-after-an-exception?view=vs-2017)
 - [View Script Documents](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-view-script-documents?view=vs-2017)
 - [Native Run-time Checks](https://docs.microsoft.com/en-us/visualstudio/debugger/how-to-use-native-run-time-checks?view=vs-2017)
-- [Debugger Tips and Tricks (including: Attach to processes; Debug with Just- In-Time)](https://docs.microsoft.com/en-us/visualstudio/debugger/debugger-tips-and-tricks?view=vs-2017)
+- [Debugger Tips and Tricks (including: Attach to processes; Debug with Just-In-Time)](https://docs.microsoft.com/en-us/visualstudio/debugger/debugger-tips-and-tricks?view=vs-2017)
 - [Set breakpoint by code](https://docs.microsoft.com/en-us/visualstudio/debugger/debugbreak-and-debugbreak?view=vs-2017)
 - [<span style="color:red">C/C++ Assertions</span>](https://docs.microsoft.com/en-us/visualstudio/debugger/c-cpp-assertions?view=vs-2017)
 
